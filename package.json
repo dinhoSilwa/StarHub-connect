@@ -20,7 +20,8 @@
     "react-hook-form": "^7.52.1",
     "styled-components": "^6.1.11",
     "swr": "^2.2.5",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
