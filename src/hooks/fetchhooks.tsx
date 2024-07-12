@@ -1,11 +1,11 @@
 import useSWR from "swr"
-import { githubersType, UserRepoType } from "../@types/githubusers"
+import { GithubersType, UserRepoType } from "../@types/githubusers"
 import { fetchGitHubers } from "../api/githubersapi"
 
 export const useGitHubUsers = (username: string) => {
 
   const url = username ? `https://api.github.com/users/${username}` : null
-  const { data: userData, error : userError } = useSWR<githubersType>(url, fetchGitHubers)
+  const { data: userData, error : userError } = useSWR<GithubersType>(url, fetchGitHubers)
   const { data : userRepo, error : urlReposErro } = useSWR<UserRepoType[]>(userData?.repos_url, fetchGitHubers)
 
 const useRepos = userRepo || [];
