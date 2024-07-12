@@ -1,14 +1,25 @@
-export type githubersType = {
-  login : string;
-  name : string;
+export type GithubersType = {
+
+  name : string ;
   loading : boolean;
-  avatar_url : string;
+  avatar_url : string ;
   followers : number
-  repos_url : string
+  repos_url : string 
   totalStart: number
   public_repos : number;
-  bio :string
+  bio :string 
 }
+
+export interface FavoriteProps {
+  name : string;
+  bio : string;
+  avatar_url : string
+  public_repos : number;
+  followers : number;
+  totalStart : number
+}
+
+export type globalDataUser = GithubersType[];
 
 export type useProfileProps = {
   username: string
