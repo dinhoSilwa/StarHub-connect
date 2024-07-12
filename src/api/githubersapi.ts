@@ -1,10 +1,9 @@
 
 import axios from "axios";
-import { githubersType } from "../@types/githubusers";
 
-export const fetchGitHubers = async (url: string) => {
+export const fetchGitHubers = async <T> (url: string) : Promise<T> => {
   try {
-    const response = await axios.get<githubersType>(url);
+    const response = await axios.get<T>(url);
     return response.data
   } catch (error) {
     throw new Error("Falha na comunicação com github")
