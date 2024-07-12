@@ -29,6 +29,31 @@ export const recentGithubers: AllGithubersTypes[] = [
     repo: 32,
     createTime: 3
   },
+  {
+    pfp: "https://avatars.githubusercontent.com/u/143217996?v=4",
+    name: "Dinho silva2",
+    stack: "Frontend",
+    follow: 12,
+    repo: 32,
+    createTime: 3
+  },
+  {
+    pfp: "https://avatars.githubusercontent.com/u/143217996?v=4",
+    name: "Dinho silva 3",
+    stack: "Frontend",
+    follow: 12,
+    repo: 32,
+    createTime: 3
+  },
+  {
+    pfp: "https://avatars.githubusercontent.com/u/143217996?v=4",
+    name: "Dinho silva 4",
+    stack: "Frontend",
+    follow: 12,
+    repo: 32,
+    createTime: 3
+  },
+  
 ]
 
 export interface stacksListType {

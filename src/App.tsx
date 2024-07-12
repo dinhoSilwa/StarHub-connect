@@ -24,12 +24,6 @@ function App() {
       </form>
       <section>
         <h2>Recentes</h2>
-        <ul>
-          <li>huber01</li>
-          <li>huber02</li>
-          <li>huber03</li>
-          <li>huber04</li>
-        </ul>
       </section>
 
       <section>
