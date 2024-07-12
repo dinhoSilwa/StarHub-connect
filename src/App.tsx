@@ -70,7 +70,7 @@ function App() {
               </ul>
             </header>
            
-           <button type='button' onClick={removeData(name)}>Remover</button>
+           <button type='button' onClick={()=>removeData(name)}>Remover</button>
           
           </li>
         )) : "Nehum Favorito Ainda" }
