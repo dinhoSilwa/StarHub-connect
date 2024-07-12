@@ -8,17 +8,19 @@ export const UserFound: React.FC<useProfileProps> = ({ username }) => {
     return <span>Carregando...</span>
   }
   if (error) {
+    console.log(error)
     return <span>Falha ao obter usuário</span>
   }
   if (!user) {
-    return null
+    return <span>Não indentificado</span>
   }
 
+    
   return(
 <>
-<span>{user.followers}{"sucesso"}</span>
-<img src={user.avatar_url} alt="oi" />
-{user.avatar_url}
+<h2>{user.name}</h2>
+<img src={user.avatar_url} alt="oi" style={{width : '10%'}} />
+<span>{user.followers}</span>
 </>
   )
 }
