@@ -1,10 +1,12 @@
 import React from "react"
 import { useGitHubUsers } from "../hooks/fetchhooks"
-import { useProfileProps } from "../@types/githubusers"
+import { FavoriteProps, useProfileProps } from "../@types/githubusers"
 import { Star } from "lucide-react"
+import useUserGlobalData from "../store.ts/favoriteusers"
 
 export const UserFound: React.FC<useProfileProps> = ({ username }) => {
   const { user, isLoading, isError, totalStart } = useGitHubUsers(username)
+  const {upDateData} = useUserGlobalData()
   if (isLoading) {
     return <span>Carregando...</span>
   }
@@ -14,6 +16,15 @@ export const UserFound: React.FC<useProfileProps> = ({ username }) => {
   }
   if (!user) {
     return <span>Não indentificado</span>
+  }
+
+
+
+  const saveFavorite = () =>{
+    const {name, bio, avatar_url , public_repos, followers} = user
+const alldata : FavoriteProps = {name, bio, avatar_url , public_repos, followers, totalStart}
+upDateData(alldata)
+    
   }
   return(
 <>
@@ -29,7 +40,7 @@ export const UserFound: React.FC<useProfileProps> = ({ username }) => {
 <li>{"Total de seguidores: "}{user.followers}</li>
 <li>{"Total de Repositorios Publicos"}{user.public_repos}</li>
 <p>{"Bio : "}{user.bio}</p>
-<button>
+<button onClick={saveFavorite}>
   <Star />
 </button>
 </ul>
