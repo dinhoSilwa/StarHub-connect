@@ -1,5 +1,6 @@
 export type GithubersType = {
 
+  login? : string;
   name : string ;
   loading : boolean;
   avatar_url : string ;
