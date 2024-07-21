@@ -12,7 +12,8 @@ export default {
         'yellow-icon': '#FCC313'
       },
       fontFamily : {
-        "Montserrat": ["Montserrat", "sans-serif"]
+        "Montserrat": ["Montserrat", "sans-serif"],
+        "LexendFont": ["Lexend", "sans-serif"]
       }
     },
   },
