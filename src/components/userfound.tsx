@@ -1,12 +1,25 @@
 import { Archive, Loader, Star, User2 } from "lucide-react"
 import { foundUserStore } from "../store/githubfound"
+import { FavoriteStorage } from "../store/Favorites"
+import { GithubersType } from "../@types/githubusers"
 
 
 export const UserFound = () => {
   const { isloading, erroFound, userFound, deleteUserFound } = foundUserStore()
+  const { saveFavorites } = FavoriteStorage()
 
   if (isloading) return (<div className="animate animate-spin"><Loader /></div>)
   if (erroFound) return (<div>Não Encontrado</div>)
+
+  const handleSaveFavorites = () => {
+    const githubTosave: { [key: string]: GithubersType } = userFound.reduce((acc, item) => {
+      acc[item.id] = item;
+      return acc;
+    }, {} as { [key: string]: GithubersType }); 
+
+    Object.values(githubTosave).forEach(githuber => saveFavorites(githuber));
+  };
+
 
   return (
     <>
@@ -56,8 +69,9 @@ export const UserFound = () => {
                   Remover
                 </button>
                 <button
+                  type="button"
                   className=" h-10 bg-purple-dark text-white font-semibold px-4 rounded-md"
-
+                  onClick={handleSaveFavorites}
                 >
                   Adicionar
                 </button>
