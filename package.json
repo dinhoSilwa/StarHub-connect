@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.8.0",
     "@types/axios": "^0.14.0",
+    "@types/uuid": "^10.0.0",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "lucide-react": "^0.402.0",
@@ -20,6 +21,7 @@
     "react-hook-form": "^7.52.1",
     "styled-components": "^6.1.11",
     "swr": "^2.2.5",
+    "uuid": "^10.0.0",
     "yup": "^1.4.0",
     "zustand": "^4.5.4"
   },
