@@ -1,4 +1,4 @@
-/// controllers
+import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import { GithubersType } from "../@types/githubusers"
 interface RepositoryType {
@@ -14,6 +14,8 @@ export const searcGithubUser = async (url: string): Promise<GithubersType> => {
     const getRepos = await getGitHubStar(userResponse.repos_url)
     const star = getRepos.reduce((acc: number, repos: RepositoryType ) => acc + repos.stargazers_count, 0)
     return {
+
+      id: uuidv4(),
       name: userResponse.name,
       login: userResponse.login,
       bio: userResponse.bio,
