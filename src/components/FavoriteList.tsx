@@ -1,0 +1,69 @@
+import { ArchiveIcon, StarIcon, User2 } from "lucide-react"
+import { FavoriteStorage } from "../store/Favorites"
+
+export const FavoriteList = () => {
+
+
+  const { favoriteDataBase } = FavoriteStorage()
+
+  const extractFirstAndSecondName = (fullname: string) => {
+    const namesParts = fullname.trim().split(' ');
+    if (namesParts.length < 2) {
+      return fullname
+    }
+    return `${namesParts[0]} ${namesParts[1]}`
+  }
+  return (
+    <ul className="flex flex-col px-2 bg-slate-200 gap-2 py-2 items-center">
+
+      <header className="mt-2 mb-2 w-full">
+        <h2 className="text-[12px] font-bold text-purple-dark 
+      font-Montserrat
+      ">
+          Lista de favoritos
+        </h2>
+      </header>
+
+
+      {favoriteDataBase.map(({ login, avatar_url, name, id, totalStart, public_repos, followers }, index) => {
+        const firstAndSecondName = extractFirstAndSecondName(name)
+        return (
+          <>
+            <li key={index} className="flex bg-white rounded-md py-4 justify-between w-[99%] px-2">
+                <header className="flex">
+                  <figure className="w-12 h-12 rounded-md overflow-hidden" >
+                    <img src={avatar_url} alt={id} />
+                  </figure>
+
+                  <p className=" flex flex-col pl-2 justify-center">
+                    <span className="flex items-center gap-1"> <strong className="flex text-[10px] flex-wrap leading-4 text-slate-900 font-LexendFont">
+                      {firstAndSecondName}</strong><span className="text-[8px] px-2 py-1 bg-purple-400 rounded-full text-purple-700 font-bold">Backend</span></span>
+                    <span className="text-[8px] text-zinc-600 font-LexendFont">@{login}</span>
+                  </p>
+
+                </header>
+
+                <section className="flex flex-1 justify-center gap-3">
+                  <article className="flex flex-col items-center justify-center gap-1">
+                    <ArchiveIcon size={14} strokeWidth={2} className="text-orange-500" />
+                    <p className="font-semibold font-LexendFont text-[11px]">{public_repos}</p>
+                  </article>
+
+                <article className="flex flex-col items-center justify-center gap-1">
+                    <User2 size={14} strokeWidth={2} className="text-orange-500" />
+                  <p className="font-semibold font-LexendFont text-[11px]">{followers}</p>
+                  </article>
+
+                <article className="flex flex-col items-center justify-center gap-1">
+                    <StarIcon size={14} strokeWidth={2} className="text-orange-500" />
+                  <p className="font-semibold font-LexendFont text-[11px]">{totalStart}</p>
+                  </article>
+                </section>
+       
+            </li>
+          </>
+        )
+      })}
+    </ul>
+  )
+}
