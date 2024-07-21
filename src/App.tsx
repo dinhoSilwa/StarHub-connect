@@ -1,12 +1,17 @@
 import "./App.css";
+import { BannerSection } from "./components/Banner";
+import { FavoriteList } from "./components/FavoriteList";
+import { Header } from "./components/Header";
 import { Search } from "./components/SearchUser";
 import { UserFound } from "./components/userfound";
 function App() {
   return (
     <>
-      <header>Olá Dinho , bem vindo ao seu starHub</header>
+      <Header />
+      <BannerSection />
       <Search />
       <UserFound />
+      <FavoriteList />
     </>
   );
 }
