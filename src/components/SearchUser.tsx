@@ -5,7 +5,7 @@ import { foundUserStore } from "../store/githubfound";
 
 export const Search = () => {
   const { term, updateTerm } = userNameTerm()
-  const { updateUserFound , setLoading, setError} = foundUserStore()
+  const { updateUserFound, setLoading, setError } = foundUserStore()
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const username = formaterForSearch(value);
@@ -15,22 +15,29 @@ export const Search = () => {
   const searchUserByUserName = () => {
     setLoading(true)
     searcGithubUser(`https://api.github.com/users/${term}`)
-      .then(res => {updateUserFound(res), setLoading(false)})
-      .catch(err => { console.log("Falha ao obter Dados", err), setError(true) }).finally(()=> setLoading(false))
+      .then(res => { updateUserFound(res), setLoading(false) })
+      .catch(err => { console.log("Falha ao obter Dados", err), setError(true) }).finally(() => setLoading(false))
   }
-  
+
   return (
     <>
-      <form action="">
-        <fieldset>
-          <label htmlFor="Digite o nickname"></label>
+      <form action="" className="flex flex-col px-2 py-4 gap-2">
+        <label htmlFor="githubsearch"
+          className="text-[10px] font-semibold text-zinc-700 font-LexendFont"
+        >Buscar no Github</label>
+        <fieldset className="flex gap-1">
           <input
+            id="githubsearch"
             type="text"
             value={term}
-            placeholder="Digite o username do Github"
+            placeholder="Github name"
             onChange={handleSearch}
+            className=" flex-1 bg-zinc-200 pl-2 rounded-md py-2 placeholder:text-[12px] font-bold text-purple-800 text-[14px]"
           />{" "}
-          <button type="button" onClick={searchUserByUserName}>
+          <button type="button"
+            onClick={searchUserByUserName}
+            className="bg-purple-700  text-white font-medium px-2 rounded-lg text-[12px]"
+          >
             Procurar
           </button>
         </fieldset>
