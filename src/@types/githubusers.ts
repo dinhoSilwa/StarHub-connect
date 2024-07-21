@@ -1,4 +1,5 @@
 export interface GithubersType {
+  id : string;
   login?: string;
   name: string;
   avatar_url: string;
@@ -8,4 +9,6 @@ export interface GithubersType {
   public_repos: number;
   bio: string
 }
+
+
 
