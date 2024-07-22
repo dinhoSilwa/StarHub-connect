@@ -32,7 +32,7 @@ export const Search = () => {
             value={term}
             placeholder="Github name"
             onChange={handleSearch}
-            className=" flex-1 bg-zinc-200 pl-2 rounded-md py-2 placeholder:text-[12px] font-bold text-purple-800 text-[14px]"
+            className=" flex-1 bg-white pl-2 rounded-md py-2 placeholder:text-[12px] font-bold text-purple-800 text-[14px] h-12"
           />{" "}
           <button type="button"
             onClick={searchUserByUserName}
