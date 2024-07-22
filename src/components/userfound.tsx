@@ -1,4 +1,4 @@
-import { Archive, EraserIcon, Loader, Star, Trash2Icon, User2 } from "lucide-react"
+import { Archive, EraserIcon, Loader, Star, User2 } from "lucide-react"
 import { foundUserStore } from "../store/githubfound"
 import { FavoriteStorage } from "../store/Favorites"
 import { GithubersType } from "../@types/githubusers"
