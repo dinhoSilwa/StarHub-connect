@@ -1,11 +1,11 @@
-import { ArchiveIcon, StarIcon, User2 } from "lucide-react"
+import { ArchiveIcon, StarIcon, Trash2, User2 } from "lucide-react"
 import { FavoriteStorage } from "../store/Favorites"
 import { stacksList } from "../model/allfavorites"
 
 export const FavoriteList = () => {
 
 
-  const { favoriteDataBase } = FavoriteStorage()
+  const { favoriteDataBase, deleteFavorites } = FavoriteStorage()
 
   const extractFirstAndSecondName = (fullname: string) => {
     if(fullname === null) return '';
@@ -76,6 +76,8 @@ export const FavoriteList = () => {
                   <p className="font-semibold font-LexendFont text-[11px]">{totalStart}</p>
                 </article>
               </section>
+
+              <Trash2 size={16} onClick={()=>deleteFavorites(id)} />
 
             </li>
           </>

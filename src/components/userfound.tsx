@@ -27,11 +27,11 @@ export const UserFound = () => {
 
 
 
-  const saveFavoriteUser = () =>{
+  const saveFavoriteUser = () => {
     setopenStackModal(false)
     handleSaveFavorites()
     deleteUserFound()
-    
+
   }
 
 
@@ -72,7 +72,7 @@ export const UserFound = () => {
                 </header>
               }
 
-              <section className={clsx("w-1/2 flex flex-col items-center gap-2", {"w-full" : openStackModal})}>
+              <section className={clsx("w-1/2 flex flex-col items-center gap-2", { "w-full": openStackModal })}>
 
                 {
                   openStackModal ?
@@ -82,8 +82,8 @@ export const UserFound = () => {
                           return (
                             <>
                               <li key={index}
-                                className={clsx("bg-purple-300 text-purple-800 px-2 font-bold rounded-md py-2 cursor-pointer text-[8px] flex items-center", {"bg-purple-950 text-white" : isStack === stackname})}
-                                onClick={()=>{addStack(id, stackname), setisStack(stackname)}}
+                                className={clsx("bg-purple-300 text-purple-800 px-2 font-bold rounded-md py-2 cursor-pointer text-[8px] flex items-center", { "bg-purple-950 text-white": isStack === stackname })}
+                                onClick={() => { addStack(id, stackname), setisStack(stackname) }}
                               >{stackname}</li>
                             </>
                           )
@@ -125,7 +125,7 @@ export const UserFound = () => {
                 {
                   openStackModal ? <button
                     type="button"
-                    className={clsx(" h-8 w-full  font-semibold rounded-md flex items-center gap-1 text-[12px] px-2 justify-center", {"bg-purple-dark text-white": isStack !== ''})}
+                    className={clsx(" h-8 w-full  font-semibold rounded-md flex items-center gap-1 text-[12px] px-2 justify-center", { "bg-purple-dark text-white": isStack !== '' })}
                     onClick={saveFavoriteUser}
                   >
                     <Layers size={16} /> Favoritar
