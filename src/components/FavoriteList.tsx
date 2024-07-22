@@ -8,8 +8,8 @@ export const FavoriteList = () => {
   const { favoriteDataBase } = FavoriteStorage()
 
   const extractFirstAndSecondName = (fullname: string) => {
+    if(fullname === null) return '';
     const namesParts = fullname.split(' ');
-    if(namesParts === null) return '';
     if (namesParts.length < 2) {
       return fullname
     }
@@ -29,7 +29,7 @@ export const FavoriteList = () => {
       <nav>
         <ul className="flex w-full">
           {
-            stacksList.map(({ name }, index) => {
+            stacksList.map(({ stackname: name }, index) => {
               return (
                 <>
                   <li key={index}
@@ -42,7 +42,7 @@ export const FavoriteList = () => {
       </nav>
 
 
-      {favoriteDataBase.map(({ login, avatar_url, name, id, totalStart, public_repos, followers }, index) => {
+      {favoriteDataBase.map(({ login, avatar_url, name, id, totalStart, public_repos, followers, stack }, index) => {
         const firstAndSecondName = extractFirstAndSecondName(name)
         return (
           <>
@@ -54,7 +54,7 @@ export const FavoriteList = () => {
 
                 <p className=" flex flex-col pl-2 justify-center">
                   <span className="flex items-center gap-1"> <strong className="flex text-[10px] flex-wrap leading-4 text-slate-900 font-LexendFont">
-                    {firstAndSecondName}</strong><span className="text-[8px] px-2 py-1 bg-purple-400 rounded-full text-purple-700 font-bold">Backend</span></span>
+                    {firstAndSecondName}</strong><span className="text-[8px] px-2 py-1 bg-purple-400 rounded-full text-purple-700 font-bold">{stack}</span></span>
                   <span className="text-[8px] text-zinc-600 font-LexendFont">@{login}</span>
                 </p>
 
