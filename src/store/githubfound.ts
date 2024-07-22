@@ -9,6 +9,7 @@ interface UserProps {
   deleteUserFound: () => void;
   setLoading : (loading : boolean) => void;
   setError : (Error : boolean) => void;
+  addStack : (id : string, stackname : string) => void;
 }
 
 export const foundUserStore = create<UserProps>()((set) =>({
@@ -20,6 +21,12 @@ export const foundUserStore = create<UserProps>()((set) =>({
     userFound: [...state.userFound, found],
     isloading : false, 
     erroFound : false
+  })),
+
+  addStack: (id: string, stackname: string) => set((state) => ({
+    userFound: state.userFound.map((item) =>
+      item.id === id ? { ...item, stack: stackname } as GithubersType : item
+    )
   })),
   
   deleteUserFound :() => set({userFound : []}),
