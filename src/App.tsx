@@ -8,7 +8,7 @@ function App() {
   return (
     <>
 <main className="bg-[#f3f1f1]">
-<Header />
+      <Header />
       <BannerSection />
       <Search />
       <UserFound />
