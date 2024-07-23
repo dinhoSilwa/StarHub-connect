@@ -25,7 +25,7 @@ export const foundUserStore = create<UserProps>()((set) =>({
 
   addStack: (id: string, stackname: string) => set((state) => ({
     userFound: state.userFound.map((item) =>
-      item.id === id ? { ...item, stack: stackname } as GithubersType : item
+      item.id === id ? { ...item, stack: stackname.toLowerCase() } as GithubersType : item
     )
   })),
   
