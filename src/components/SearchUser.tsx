@@ -27,7 +27,7 @@ export const Search = () => {
 
   return (
     <>
-      <form action="" className="flex flex-col px-2 py-4 gap-2">
+      <form action="" className="flex flex-col px-4 py-4 gap-2">
         <label
           htmlFor="githubsearch"
           className="text-[10px] font-semibold text-zinc-700 font-LexendFont"
