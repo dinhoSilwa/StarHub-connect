@@ -4,16 +4,17 @@ export interface stacksListType {
 }
 
 export const stacksList: stacksListType[] = [
+  { stackname: "Todas" },
   { stackname: "Frontend" },
   { stackname: "Backend" },
   { stackname: "Devops" },
   { stackname: "Mobile" },
   { stackname: "Fullstack" },
-  { stackname: "Data Science" },
-  { stackname: "Machine Learning" },
+  { stackname: "DataSC" },
+  { stackname: "MLearning" },
   { stackname: "AI" },
   { stackname: "Security" },
-  { stackname: "Game Development" },
+  { stackname: "GameDev" },
   { stackname: "AR/VR" },
   { stackname: "Blockchain" },
   { stackname: "Cloud" }
