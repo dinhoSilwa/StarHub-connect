@@ -2,17 +2,19 @@ import { ArchiveIcon, StarIcon, Trash2, User2 } from "lucide-react";
 import { FavoriteStorage } from "../store/Favorites";
 import { stacksList } from "../model/allfavorites";
 import { extractFirstAndSecondName } from "../utils/stringutils";
-import { useEffect, useState } from "react";
 import { GithubersType } from "../@types/githubusers";
+import { useEffect, useState } from "react";
 
 export const FavoriteList = () => {
   const { favoriteDataBase, deleteFavorites } = FavoriteStorage();
   const [currentListRender ,setcurrentListRender] = useState<GithubersType[]>(favoriteDataBase)
-  useEffect(()=>{
-    setcurrentListRender(currentListRender)
-  },[currentListRender])
 
 
+  useEffect(() => {
+    setcurrentListRender(favoriteDataBase);
+  }, [favoriteDataBase]);
+
+  
   const handleStack =(stackListName : string) => {
     if(stackListName === 'Todas'){
       setcurrentListRender(favoriteDataBase) 
