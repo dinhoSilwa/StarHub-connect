@@ -1,22 +1,26 @@
-import { ArchiveIcon, StarIcon, Trash2, User2 } from "lucide-react";
+import { ArchiveIcon, StarIcon, User2 } from "lucide-react";
 import { FavoriteStorage } from "../store/Favorites";
 import { stacksList } from "../model/allfavorites";
 import { extractFirstAndSecondName } from "../utils/stringutils";
 import { GithubersType } from "../@types/githubusers";
 import { useEffect, useState } from "react";
+import clsx from "clsx";
 
 export const FavoriteList = () => {
-  const { favoriteDataBase, deleteFavorites } = FavoriteStorage();
+  const { favoriteDataBase } = FavoriteStorage();
   const [currentListRender ,setcurrentListRender] = useState<GithubersType[]>(favoriteDataBase)
+  const [currentStackList, setcurrentStackList] = useState('')
 
 
   useEffect(() => {
     setcurrentListRender(favoriteDataBase);
+    setcurrentStackList("Todas")
   }, [favoriteDataBase]);
 
-  
+
   const handleStack =(stackListName : string) => {
     if(stackListName === 'Todas'){
+      setcurrentStackList(stackListName)
       setcurrentListRender(favoriteDataBase) 
       return
     }    
@@ -29,8 +33,10 @@ export const FavoriteList = () => {
     }
     
     setcurrentListRender(filterByStack)
+    setcurrentStackList(stackListName)
   }
   return (
+    
     <section className="flex flex-col px-4 bg-zinc-100 gap-2 py-2">
       <header className="mt-2 mb-2 w-full">
         <h2
@@ -52,7 +58,7 @@ export const FavoriteList = () => {
                     role={`${stackname} item da lista`}
                     title={stackname}
                     key={index}
-                    className="w-[230px] px-4 py-2 flex flex-row rounded-full font-semibold font-LexendFont hover:bg-purple-dark hover:text-white text-[12px]"
+                    className={clsx("w-[230px] px-4 py-2 flex flex-row rounded-full font-semibold font-LexendFont hover:bg-purple-dark hover:text-white text-[12px]", {"bg-purple-dark text-white" : currentStackList === stackname})}
                     onClick={()=>handleStack(stackname)}
                   >
                     {stackname}
@@ -64,7 +70,7 @@ export const FavoriteList = () => {
         </nav>
       </header>
 
-      <section>
+      <section className="flex flex-col gap-4">
         {currentListRender?.length > 0 ?
           currentListRender?.map(
             (
@@ -85,9 +91,9 @@ export const FavoriteList = () => {
                 <>
                   <section
                     key={index}
-                    className="flex bg-white rounded-md py-4 justify-between w-[99%] px-2"
+                    className="flex bg-white rounded-md py-4 items-center justify-around w-[99%] px-2"
                   >
-                    <header className="flex">
+                    <header className="flex w-[200px]">
                       <figure className="w-12 h-12 rounded-md overflow-hidden">
                         <img src={avatar_url} alt={id} />
                       </figure>
@@ -108,7 +114,7 @@ export const FavoriteList = () => {
                       </p>
                     </header>
 
-                    <article className="flex flex-1 justify-center gap-3">
+                    <article className="flex w-[90px] justify-center gap-3">
                       <div className="flex flex-col items-center justify-center gap-1">
                         <ArchiveIcon
                           size={14}
@@ -142,8 +148,6 @@ export const FavoriteList = () => {
                         </p>
                       </div>
                     </article>
-
-                    <Trash2 size={16} onClick={() => deleteFavorites(id)} />
                   </section>
                 </>
               );

@@ -2,10 +2,12 @@ import { formaterForSearch } from "../utils/stringutils";
 import { userNameTerm } from "../store/searchResults";
 import { searcGithubUser } from "../controller/getgithubers";
 import { foundUserStore } from "../store/githubfound";
+import { FavoriteStorage } from "../store/Favorites";
 
 export const Search = () => {
   const { term, updateTerm } = userNameTerm();
   const { updateUserFound, setLoading, setError } = foundUserStore();
+  const {favoriteDataBase} = FavoriteStorage()
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -14,6 +16,16 @@ export const Search = () => {
   };
 
   const searchUserByUserName = () => {
+
+    const getAllUser = favoriteDataBase.some(userLogin => userLogin.login == term )
+
+    if(getAllUser){
+      alert("Usuário já Encontrado Antes")
+      console.log(getAllUser)
+      return
+
+    }
+
     setLoading(true);
     searcGithubUser(`https://api.github.com/users/${term}`)
       .then((res) => {
