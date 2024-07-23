@@ -7,7 +7,8 @@ export const FavoriteList = () => {
   const { favoriteDataBase, deleteFavorites } = FavoriteStorage();
 
   return (
-    <ul className="flex flex-col px-2 bg-zinc-100 gap-2 py-2">
+    <section className="flex flex-col px-4 bg-zinc-100 gap-2 py-2">
+
       <header className="mt-2 mb-2 w-full">
         <h2
           className="text-[12px] font-bold text-purple-dark 
@@ -16,10 +17,8 @@ export const FavoriteList = () => {
         >
           Lista de favoritos
         </h2>
-      </header>
-
-      <nav role="Stack-List-Navigation">
-        <ul className="flex w-full">
+        <nav role="Stack-List-Navigation" className=" overflow-hidden h-16 grid place-content-center">
+        <ul className="flex overflow-x-auto items-center gap-2 justify-between">
           {stacksList.map(({ stackname }, index) => {
             return (
               <>
@@ -27,7 +26,7 @@ export const FavoriteList = () => {
                   role={`${stackname} item da lista`}
                   title={stackname}
                   key={index}
-                  className="w-[132px] flex justify-center px-2 py-2 hover:bg-purple-dark hover:text-white rounded-full"
+                  className="w-[230px] px-4 py-2 flex flex-row rounded-full font-semibold font-LexendFont hover:bg-purple-dark hover:text-white text-[12px]"
                 >
                   {stackname}
                 </li>
@@ -36,8 +35,12 @@ export const FavoriteList = () => {
           })}
         </ul>
       </nav>
+      </header>
 
-      {favoriteDataBase && favoriteDataBase.map(
+
+<section>
+  
+{favoriteDataBase && favoriteDataBase.map(
         (
           {
             login,
@@ -120,6 +123,9 @@ export const FavoriteList = () => {
           );
         }
       )}
-    </ul>
+</section>
+
+
+    </section>
   );
 };
