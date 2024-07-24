@@ -37,12 +37,19 @@ export const UserFound = () => {
     setopenStackModal(false);
     handleSaveFavorites();
     deleteUserFound();
-    setisStack('')
+    setisStack("")
+    
   };
 
+  const handleDeleteFounds = () =>{
+    setisStack("")
+    deleteUserFound()
+    setopenStackModal(false)
+    
+  }
   return (
-    <>
-      {userFound.map(
+    <article>
+    {userFound.map(
         (
           {
             id,
@@ -61,7 +68,7 @@ export const UserFound = () => {
               <button
                 type="button"
                 className=" h-8 text-purple-dark bg-purple-dark-white font-semibold px-2 rounded-md flex items-center gap-1 text-[8px] "
-                onClick={deleteUserFound}
+                onClick={handleDeleteFounds}
               >
                 <EraserIcon size={12} /> Limpar busca
               </button>
@@ -158,7 +165,7 @@ export const UserFound = () => {
                     type="button"
                     className={clsx(
                       " h-8 w-full  font-semibold rounded-md flex items-center gap-2 text-[12px] px-2 justify-center",
-                      { "bg-purple-dark text-white": isStack !== "" }
+                      { " text-white bg-purple-dark": isStack.length > 0 }, {"bg-zinc-300 text-zinc-900" : isStack === ""}
                     )}
                     onClick={saveFavoriteUser}
                   >
@@ -178,6 +185,6 @@ export const UserFound = () => {
           </section>
         )
       )}
-    </>
+    </article>
   );
 };
