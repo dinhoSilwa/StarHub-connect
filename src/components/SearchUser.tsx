@@ -7,7 +7,7 @@ import { FavoriteStorage } from "../store/Favorites";
 export const Search = () => {
   const { term, updateTerm } = userNameTerm();
   const { updateUserFound, setLoading, setError } = foundUserStore();
-  const {favoriteDataBase} = FavoriteStorage()
+  const { favoriteDataBase } = FavoriteStorage();
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -16,14 +16,14 @@ export const Search = () => {
   };
 
   const searchUserByUserName = () => {
+    const getAllUser = favoriteDataBase.some(
+      (userLogin) => userLogin.login == term
+    );
 
-    const getAllUser = favoriteDataBase.some(userLogin => userLogin.login == term )
-
-    if(getAllUser){
-      alert("Usuário já Encontrado Antes")
-      console.log(getAllUser)
-      return
-
+    if (getAllUser) {
+      alert("Usuário já Encontrado Antes");
+      console.log(getAllUser);
+      return;
     }
 
     setLoading(true);

@@ -7,14 +7,13 @@ import { UserFound } from "./components/userfound";
 function App() {
   return (
     <>
-<main className="bg-[#f3f1f1]">
-      <Header />
-      <BannerSection />
-      <Search />
-      <UserFound />
-      <FavoriteList />
-</main>
-      
+      <main className="bg-[#f3f1f1]">
+        <Header />
+        <BannerSection />
+        <Search />
+        <UserFound />
+        <FavoriteList />
+      </main>
     </>
   );
 }
