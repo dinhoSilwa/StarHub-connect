@@ -4,7 +4,7 @@ export const Header = () => {
   return (
     <>
       <header className="h-20 flex items-center justify-start gap-2 px-2">
-        <figure className="bg-red-200 h-10 w-10 rounded-full overflow-hidden">
+        <figure className="bg-zinc-200 h-10 w-10 rounded-full overflow-hidden">
           <img src="oi" alt="" />
         </figure>
         <h2 className="font-bold text-[14px]">Olá, Dinho👋</h2>

@@ -71,6 +71,7 @@ export const FavoriteList = () => {
       </header>
 
       <section className="flex flex-col gap-4">
+
         {currentListRender?.length > 0 ?
           currentListRender?.map(
             (
@@ -91,11 +92,14 @@ export const FavoriteList = () => {
                 <>
                   <section
                     key={index}
-                    className="flex bg-white rounded-md py-4 items-center justify-around w-[99%] px-2"
+                    className="flex bg-white rounded-md py-4 items-center justify-around w-[99%] px-4 h-20"
+                    onClick={()=>alert("oi")}
                   >
+
+                
                     <header className="flex w-[200px]">
                       <figure className="w-12 h-12 rounded-md overflow-hidden">
-                        <img src={avatar_url} alt={id} />
+                        <img src={avatar_url} alt={id}  />
                       </figure>
 
                       <p className=" flex flex-col pl-2 justify-center">
@@ -104,7 +108,7 @@ export const FavoriteList = () => {
                           <strong className="flex text-[10px] flex-wrap leading-4 text-slate-900 font-LexendFont">
                             {firstAndSecondName}
                           </strong>
-                          <span className="text-[8px] px-2 py-1 bg-purple-400 rounded-full text-purple-700 font-bold">
+                          <span className="text-[7px] px-1 h-4 bg-purple-200 rounded-full text-purple-500 font-bold grid place-content-center">
                             {stack}
                           </span>
                         </span>

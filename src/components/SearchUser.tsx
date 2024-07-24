@@ -3,10 +3,11 @@ import { userNameTerm } from "../store/searchResults";
 import { searcGithubUser } from "../controller/getgithubers";
 import { foundUserStore } from "../store/githubfound";
 import { FavoriteStorage } from "../store/Favorites";
+import clsx from "clsx";
 
 export const Search = () => {
   const { term, updateTerm } = userNameTerm();
-  const { updateUserFound, setLoading, setError } = foundUserStore();
+  const { updateUserFound, setLoading, setError, userFound } = foundUserStore();
   const { favoriteDataBase } = FavoriteStorage();
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +59,11 @@ export const Search = () => {
           <button
             type="button"
             onClick={searchUserByUserName}
-            className="bg-purple-700  text-white font-medium px-2 rounded-lg text-[12px]"
+            className={clsx(
+              "bg-purple-700  text-white font-medium px-2 rounded-lg text-[12px]",
+              { "bg-zinc-400": userFound.length > 0 }
+            )}
+            disabled={userFound.length > 0 ? true : false}
           >
             Procurar
           </button>
