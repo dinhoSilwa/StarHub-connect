@@ -2,9 +2,9 @@ import { Archive, EraserIcon, Layers, Loader, Star, User2 } from "lucide-react";
 import { foundUserStore } from "../store/githubfound";
 import { FavoriteStorage } from "../store/Favorites";
 import { GithubersType } from "../@types/githubusers";
-import { stacksList } from "../model/allfavorites";
 import { useState } from "react";
 import clsx from "clsx";
+import { SelectStackList } from "./SelectStackList";
 
 export const UserFound = () => {
   const { isloading, erroFound, userFound, deleteUserFound, addStack } =
@@ -37,19 +37,17 @@ export const UserFound = () => {
     setopenStackModal(false);
     handleSaveFavorites();
     deleteUserFound();
-    setisStack("")
-    
+    setisStack("");
   };
 
-  const handleDeleteFounds = () =>{
-    setisStack("")
-    deleteUserFound()
-    setopenStackModal(false)
-    
-  }
+  const handleDeleteFounds = () => {
+    setisStack("");
+    deleteUserFound();
+    setopenStackModal(false);
+  };
   return (
     <article>
-    {userFound.map(
+      {userFound.map(
         (
           {
             id,
@@ -101,31 +99,12 @@ export const UserFound = () => {
                 })}
               >
                 {openStackModal ? (
-                  <ul className="flex gap-2 flex-wrap overflow-hidden">
-                    {stacksList.map(({ stackname }, index) => {
-                      return (
-                        <>
-               {
-                stackname === "Todas" ? null : <li
-                key={index}
-                className={clsx(
-                  "bg-purple-300 text-purple-800 px-2 font-bold rounded-md py-2 cursor-pointer text-[8px] flex items-center",
-                  {
-                    "bg-purple-800 text-white":
-                      isStack === stackname,
-                  }
-                )}
-                onClick={() => {
-                  addStack(id, stackname), setisStack(stackname);
-                }}
-              >
-                {stackname}
-              </li>
-               }
-                        </>
-                      );
-                    })}
-                  </ul>
+                  <SelectStackList
+                    id={id}
+                    addStack={addStack}
+                    isStack={isStack}
+                    setisStack={setisStack}
+                  />
                 ) : (
                   <ul className="flex gap-4">
                     <li
@@ -165,7 +144,8 @@ export const UserFound = () => {
                     type="button"
                     className={clsx(
                       " h-8 w-full  font-semibold rounded-md flex items-center gap-2 text-[12px] px-2 justify-center",
-                      { " text-white bg-purple-dark": isStack.length > 0 }, {"bg-zinc-300 text-zinc-900" : isStack === ""}
+                      { " text-white bg-purple-dark": isStack.length > 0 },
+                      { "bg-zinc-300 text-zinc-900": isStack === "" }
                     )}
                     onClick={saveFavoriteUser}
                   >
