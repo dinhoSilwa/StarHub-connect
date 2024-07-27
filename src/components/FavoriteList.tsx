@@ -3,11 +3,11 @@ import { extractFirstAndSecondName } from "../utils/stringutils";
 import { GithubersType } from "../@types/githubusers";
 import { useEffect, useState } from "react";
 import { StackListRender } from "./StackList";
-import { ArchiveIcon, EllipsisVertical, StarIcon,  User2 } from "lucide-react";
+import { ArchiveIcon, EllipsisVertical, StarIcon,  Trash,  User2 } from "lucide-react";
 import { ManagerUser } from "./EditMenu";
 
 export const FavoriteList = () => {
-  const { favoriteDataBase } = FavoriteStorage();
+  const { favoriteDataBase , deleteFavorites} = FavoriteStorage();
   const [currentListRender, setcurrentListRender] =
     useState<GithubersType[]>(favoriteDataBase);
   const [currentStackList, setcurrentStackList] = useState("");
@@ -80,6 +80,8 @@ export const FavoriteList = () => {
                     key={index}
                     className="flex bg-white rounded-md py-4 items-center justify-around w-[99%] px-4 h-20"
                   >
+                    <Trash onClick={()=>deleteFavorites(id)}/>
+                      
                     <header className="flex w-[200px]">
                       <figure className="w-12 h-12 rounded-md overflow-hidden">
                         <img src={avatar_url} alt={id} />
