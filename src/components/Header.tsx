@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { BellIcon } from "lucide-react";
+import { BellIcon, EllipsisVertical } from "lucide-react";
 
 export const Header = () => {
   return (
@@ -17,10 +17,14 @@ export const Header = () => {
           Olá, Dinho👋
         </h2>
 
-        <section className="flex-1 flex justify-end px-4">
+        <section className="flex-1 flex justify-end px-4 items-center gap-4">
           <figure className="h-10 w-10 bg-zinc-100 grid place-content-center rounded-full">
             <BellIcon size={20} className="text-purple-800" />
           </figure>
+         
+          <nav role="navegação h-10 w-10">
+          <EllipsisVertical className="text-purple-dark" />
+          </nav>
         </section>
       </header>
     </>
