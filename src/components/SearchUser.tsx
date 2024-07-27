@@ -40,10 +40,10 @@ export const SearchUser = () => {
 
   return (
     <>
-      <form action="" className="flex flex-col px-4 py-4 gap-2">
+      <form action="" className="flex flex-col px-4 py-4 gap-2 small:px-6">
         <label
           htmlFor="githubsearch"
-          className="text-[10px] font-semibold text-zinc-700 font-LexendFont"
+          className="text-[10px] font-semibold text-zinc-700 font-LexendFont small:text-[12px] small:mb-2"
         >
           Buscar no Github
         </label>
@@ -54,7 +54,7 @@ export const SearchUser = () => {
             value={term}
             placeholder="Github name"
             onChange={handleSearch}
-            className=" flex-1 bg-white pl-2 rounded-md py-2 placeholder:text-[12px] font-bold text-purple-800 text-[14px] h-12"
+            className=" flex-1 bg-white pl-2 rounded-md py-2 placeholder:text-[12px] font-bold text-purple-800 text-[14px] h-12 small:text-[16px]"
           />{" "}
           <button
             type="button"

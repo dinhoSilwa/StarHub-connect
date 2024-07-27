@@ -11,7 +11,7 @@ function App() {
     <>
     
 {
-  !login ? <main>
+  login ? <main>
   <div className="flex flex-col items-center">
     <input type="text" placeholder="digite o seu email" className="border" />
 <input type="password" placeholder="Adicionar Senha" className="border" />

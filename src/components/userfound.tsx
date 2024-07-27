@@ -68,7 +68,8 @@ export const UserFound = () => {
                 className=" h-8 text-purple-dark bg-purple-dark-white font-semibold px-2 rounded-md flex items-center gap-1 text-[8px] "
                 onClick={handleDeleteFounds}
               >
-                <EraserIcon size={12} /> Limpar busca
+                <EraserIcon size={12} /> 
+                <span className="small:text-[12px]">Limpar busca</span>
               </button>
             </div>
 
@@ -143,13 +144,14 @@ export const UserFound = () => {
                   <button
                     type="button"
                     className={clsx(
-                      " h-8 w-full  font-semibold rounded-md flex items-center gap-2 text-[12px] px-2 justify-center",
+                      " small:h-12 h-8 w-full  font-semibold rounded-md flex items-center gap-2 text-[12px] px-2 justify-center ",
                       { " text-white bg-purple-dark": isStack.length > 0 },
                       { "bg-zinc-300 text-zinc-900": isStack === "" }
                     )}
                     onClick={saveFavoriteUser}
                   >
-                    <Layers size={16} /> Favoritar
+                    <Layers size={16} /> 
+                    <span className="small:text-[16px]">Favoritar</span>
                   </button>
                 ) : (
                   <button

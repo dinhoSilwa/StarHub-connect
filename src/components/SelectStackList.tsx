@@ -16,7 +16,7 @@ export const SelectStackList: React.FC<SelectStackListProps> = ({
   ...props
 }) => {
   return (
-    <ul className="flex gap-2 flex-wrap overflow-hidden" {...props}>
+    <ul className="flex gap-2 flex-wrap overflow-hidden mb-4" {...props}>
       {stacksList.map(({ stackname }, index) => {
         return (
           <>
@@ -24,7 +24,7 @@ export const SelectStackList: React.FC<SelectStackListProps> = ({
               <li
                 key={index}
                 className={clsx(
-                  "bg-purple-300 text-purple-800 px-2 font-bold rounded-md py-2 cursor-pointer text-[8px] flex items-center",
+                  "bg-purple-300 text-purple-800 px-2 font-bold rounded-md py-2 cursor-pointer text-[8px] small:text-[10px] flex items-center",
                   {
                     "bg-purple-800 text-white": isStack === stackname,
                   }

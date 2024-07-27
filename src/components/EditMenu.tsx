@@ -22,11 +22,11 @@ export const ManagerUser = ({user, ...props} : CrudUserProps) => {
 
         <ul {...props}
           className={clsx(
-            "flex flex-col gap-2 px-2 w-[100px] py-4 shadow-md bg-white rounded-xl z-50 absolute right-0", {"hidden" : isOpen === false}
+            "flex flex-col gap-2 px-2 small:px-4 w-[100px] small:w-[180px] py-4 shadow-md bg-white rounded-xl z-50 absolute right-0", {"hidden" : isOpen === false}
           )}
         >
-          <header>
-            <CircleXIcon size={16} className="ml-auto" onClick={()=>setIsOpen(!isOpen)}  />
+          <header title="fechar Opções">
+            <CircleXIcon size={16} className="ml-auto"  onClick={()=>setIsOpen(!isOpen)}  />
           </header>
 
           <li className="flex gap-1 items-center hover:text-purple-800">

@@ -16,10 +16,17 @@ export const StackListRender: React.FC<StackListProps> = ({
   return (
     <nav
       role="Stack-List-Navigation"
-      className=" overflow-hidden  grid place-content-center"
+      className="overflow-hidden  grid place-content-center small:px-2"
       {...props}
     >
-      <ul className="flex overflow-x-auto items-center gap-2 justify-between h-16">
+          <h2
+          className="text-[12px] font-bold text-purple-dark 
+      font-Montserrat small:px-0
+      "
+        >
+          Lista de favoritos
+        </h2>
+      <ul className="flex overflow-x-auto items-center gap-2 justify-between h-16 small:h-24">
         {stacksList.map(({ stackname }, index) => {
           return (
             <>

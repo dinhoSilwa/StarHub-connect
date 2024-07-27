@@ -15,7 +15,7 @@ export const stacksList: stacksListType[] = [
   { stackname: "AI" },
   { stackname: "Security" },
   { stackname: "GameDev" },
-  { stackname: "AR/VR" },
   { stackname: "Blockchain" },
-  { stackname: "Cloud" }
+  { stackname: "Cloud" },
+  {stackname : "Criar"}
 ];
