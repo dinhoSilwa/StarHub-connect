@@ -151,7 +151,6 @@ export const FavoriteList = () => {
               
                   </section>
 
-                  {currentStackList}
                 </>
               );
             }
