@@ -1,10 +1,12 @@
-import { Archive, EraserIcon, Layers, Loader, Star, User2 } from "lucide-react";
+import { Archive, EraserIcon, Layers, Star, User2 } from "lucide-react";
 import { foundUserStore } from "../store/githubfound";
 import { FavoriteStorage } from "../store/Favorites";
 import { GithubersType } from "../@types/githubusers";
 import { useState } from "react";
 import clsx from "clsx";
 import { SelectStackList } from "./SelectStackList";
+import { LoadingUser } from "./loadinguser";
+import { NotfoundUser } from "./notFounduser";
 
 export const UserFound = () => {
   const { isloading, erroFound, userFound, deleteUserFound, addStack } =
@@ -15,11 +17,9 @@ export const UserFound = () => {
 
   if (isloading)
     return (
-      <main className="flex gap-2">
-        <Loader className="animate animate-spin" /> Buscando no Github ...
-      </main>
+     <LoadingUser />
     );
-  if (erroFound) return <div>Não Encontrado</div>;
+  if (erroFound) return <NotfoundUser />;
 
   const handleSaveFavorites = () => {
     const githubTosave: { [key: string]: GithubersType } = userFound.reduce(
