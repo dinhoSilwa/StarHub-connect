@@ -5,7 +5,7 @@ import { foundUserStore } from "../store/githubfound";
 import { FavoriteStorage } from "../store/Favorites";
 import clsx from "clsx";
 
-export const Search = () => {
+export const SearchUser = () => {
   const { term, updateTerm } = userNameTerm();
   const { updateUserFound, setLoading, setError, userFound } = foundUserStore();
   const { favoriteDataBase } = FavoriteStorage();
@@ -60,12 +60,12 @@ export const Search = () => {
             type="button"
             onClick={searchUserByUserName}
             className={clsx(
-              "bg-purple-700  text-white font-medium px-2 rounded-lg text-[12px]",
+              "bg-purple-700  text-white font-medium px-2 rounded-lg text-[12px] w-[70px]",
               { "bg-zinc-400": userFound.length > 0 }
             )}
             disabled={userFound.length > 0 ? true : false}
           >
-            Procurar
+            Buscar
           </button>
         </fieldset>
       </form>
