@@ -15,10 +15,7 @@ export const UserFound = () => {
   const [openStackModal, setopenStackModal] = useState(false);
   const [isStack, setisStack] = useState("");
 
-  if (isloading)
-    return (
-     <LoadingUser />
-    );
+  if (isloading) return <LoadingUser />;
   if (erroFound) return <NotfoundUser />;
 
   const handleSaveFavorites = () => {
@@ -34,6 +31,8 @@ export const UserFound = () => {
   };
 
   const saveFavoriteUser = () => {
+
+    
     setopenStackModal(false);
     handleSaveFavorites();
     deleteUserFound();
@@ -61,14 +60,14 @@ export const UserFound = () => {
           },
           index
         ) => (
-          <section className="rounded-lg bg-white px-6 w-[90%] ml-auto mr-auto">
+          <section className="rounded-xl bg-white px-6 ml-auto mr-auto shadow-xl py-2">
             <div className=" flex justify-end items-center pt-2">
               <button
                 type="button"
                 className=" h-8 text-purple-dark bg-purple-dark-white font-semibold px-2 rounded-md flex items-center gap-1 text-[8px] "
                 onClick={handleDeleteFounds}
               >
-                <EraserIcon size={12} /> 
+                <EraserIcon size={12} />
                 <span className="small:text-[12px]">Limpar busca</span>
               </button>
             </div>
@@ -100,12 +99,15 @@ export const UserFound = () => {
                 })}
               >
                 {openStackModal ? (
-                  <SelectStackList
-                    id={id}
-                    addStack={addStack}
-                    isStack={isStack}
-                    setisStack={setisStack}
-                  />
+                  <>
+                    <li className="text-[12px] font-semibold w-full my-2 text-zinc-700">Você pode adicionar uma <strong>Etiqueta</strong></li>
+                    <SelectStackList
+                      id={id}
+                      addStack={addStack}
+                      isStack={isStack}
+                      setisStack={setisStack}
+                    />
+                  </>
                 ) : (
                   <ul className="flex gap-4">
                     <li
@@ -150,7 +152,7 @@ export const UserFound = () => {
                     )}
                     onClick={saveFavoriteUser}
                   >
-                    <Layers size={16} /> 
+                    <Layers size={16} />
                     <span className="small:text-[16px]">Favoritar</span>
                   </button>
                 ) : (

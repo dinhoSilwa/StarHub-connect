@@ -4,6 +4,8 @@ import { searcGithubUser } from "../controller/getgithubers";
 import { foundUserStore } from "../store/githubfound";
 import { FavoriteStorage } from "../store/Favorites";
 import clsx from "clsx";
+import { UserFound } from "./userfound";
+import { Delete, Search } from "lucide-react";
 
 export const SearchUser = () => {
   const { term, updateTerm } = userNameTerm();
@@ -17,6 +19,10 @@ export const SearchUser = () => {
   };
 
   const searchUserByUserName = () => {
+    if (term === "") {
+      alert("Digite alguma coisa");
+      return;
+    }
     const getAllUser = favoriteDataBase.some(
       (userLogin) => userLogin.login == term
     );
@@ -40,10 +46,13 @@ export const SearchUser = () => {
 
   return (
     <>
-      <form action="" className="flex flex-col px-4 py-4 gap-2 small:px-6">
+      <form
+        action=""
+        className="flex flex-col py-8 gap-4 small:px-4 bg-slate-200 w-[95%] rounded-xl mr-auto ml-auto mt-4 mb-8"
+      >
         <label
           htmlFor="githubsearch"
-          className="text-[10px] font-semibold text-zinc-700 font-LexendFont small:text-[12px] small:mb-2"
+          className="text-[10px] font-semibold text-slate-700 font-LexendFont small:text-[12px]"
         >
           Buscar no Github
         </label>
@@ -53,6 +62,7 @@ export const SearchUser = () => {
             type="text"
             value={term}
             placeholder="Github name"
+            required={true}
             onChange={handleSearch}
             className=" flex-1 bg-white pl-2 rounded-md py-2 placeholder:text-[12px] font-bold text-purple-800 text-[14px] h-12 small:text-[16px]"
           />{" "}
@@ -60,14 +70,15 @@ export const SearchUser = () => {
             type="button"
             onClick={searchUserByUserName}
             className={clsx(
-              "bg-purple-700  text-white font-medium px-2 rounded-lg text-[12px] w-[70px]",
+              "bg-purple-700 text-white font-medium px-2 rounded-lg text-[12px] w-[70px] grid place-content-center",
               { "bg-zinc-400": userFound.length > 0 }
             )}
             disabled={userFound.length > 0 ? true : false}
           >
-            Buscar
+            {userFound.length > 0 ? <Delete /> : <Search size={24} />}
           </button>
         </fieldset>
+        <UserFound />
       </form>
     </>
   );
