@@ -19,7 +19,7 @@ export const BannerSection = () => {
             Desenvolvedores Favoritos
           </h2>
         </header>
-        <img src={bannerIcons} alt="" className={clsx("w-[100px]", "small:w-[140px] drop-shadow-md")} />
+        <img src={bannerIcons} alt="" className={clsx("w-[100px]", "small:w-[140px] ")} />
       </section>
     </>
   );
