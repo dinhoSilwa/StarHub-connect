@@ -9,7 +9,8 @@ export default {
       colors : {
         'purple-light': '#EBE5FF',
         'purple-dark': '#2C0076',
-        'yellow-icon': '#FCC313'
+        'yellow-icon': '#FCC313',
+        'banner-title' : '#51169C'
       },
       fontFamily : {
         "Montserrat": ["Montserrat", "sans-serif"],
