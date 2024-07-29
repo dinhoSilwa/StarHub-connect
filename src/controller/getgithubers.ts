@@ -25,6 +25,7 @@ export const searcGithubUser = async (url: string): Promise<GithubersType> => {
       public_repos: userResponse.public_repos,
       repos_url: userResponse.repos_url,
       totalStart: star,
+      createdAt: new Date()
     };
   } catch (error) {
     throw new Error("Falha na comunicação com github");
