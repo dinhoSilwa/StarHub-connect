@@ -6,8 +6,8 @@ export const BannerSection = () => {
     <>
       <section
         className={clsx(
-          "flex justify-center items-center rounded-xl banner-gradiente h-[132px] w-[90%] ml-auto mr-auto px-6 mb-4",
-          "small:justify-between small:px-6 small:h-[182px]"
+          "flex justify-center items-center rounded-xl banner-gradiente h-[132px] w-[95%] ml-auto mr-auto px-4 mb-4",
+          "small:justify-between small:px-4 small:h-[182px]"
         )}
       >
         <header className="flex flex-col font-LexendFont w-[150px] mr-6">
