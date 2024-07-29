@@ -3,7 +3,7 @@ import { extractFirstAndSecondName } from "../utils/stringutils";
 import { GithubersType } from "../@types/githubusers";
 import { useEffect, useState } from "react";
 import { StackListRender } from "./StackList";
-import { ArchiveIcon, EllipsisVertical, StarIcon,  User2 } from "lucide-react";
+import { Archive, EllipsisVertical, Layers3, Star, User2 } from "lucide-react";
 import { ManagerUser } from "./EditMenu";
 import { NotListYet } from "./Notlistyet";
 
@@ -12,8 +12,7 @@ export const FavoriteList = () => {
   const [currentListRender, setcurrentListRender] =
     useState<GithubersType[]>(favoriteDataBase);
   const [currentStackList, setcurrentStackList] = useState("");
-  const [isOpenId, setIsOpenId] = useState<string | null>("")
-
+  const [isOpenId, setIsOpenId] = useState<string | null>("");
 
   useEffect(() => {
     setcurrentListRender(favoriteDataBase);
@@ -41,9 +40,8 @@ export const FavoriteList = () => {
   };
 
   return (
-    <section className="flex flex-col px-4 bg-zinc-100 gap-2 py-2">
+    <section className="flex flex-col px-4 bg-zinc-200 gap-2 py-2">
       <header className="mt-2 mb-2 w-full">
-    
         <StackListRender
           handleStack={handleStack}
           currentStackList={currentStackList}
@@ -64,6 +62,8 @@ export const FavoriteList = () => {
                 public_repos,
                 followers,
                 stack,
+                createdAt
+                // bio
               },
               index
             ) => {
@@ -73,80 +73,128 @@ export const FavoriteList = () => {
                 <>
                   <section
                     key={index}
-                    className="flex bg-white rounded-md py-4 items-center justify-around px-4 h-20 small:h-24"
+                    className="flex bg-white rounded-md py-6 items-start justify-around px-4 "
                   >
-                      
-                    <header className="flex w-auto">
+                    <section className="flex flex-col gap-4">
+                      <header className="flex items-start gap-2">
+                        <figure className="w-12 h-12 small:w-12 small:h-12 rounded-md ">
+                          <img
+                            src={avatar_url}
+                            alt={id}
+                            className="rounded-md"
+                          />
+                        </figure>
 
+                        <section className=" flex flex-col pl-2 justify-center">
+                          <span className="flex items-start gap-1">
+                            {" "}
+                            <strong className="flex text-[10px] flex-wrap leading-4 text-slate-900 font-LexendFont small:text-[12px]">
+                              {firstAndSecondName === "" ? login : firstAndSecondName }
+                            </strong>
+                          </span>
+                          <span className="text-[8px] text-zinc-600 font-LexendFont">
+                            @{login?.toLocaleLowerCase()}
+                          </span>
 
-                      <figure className="w-12 h-12 small:w-12 small:h-12 rounded-md ">
-                        <img src={avatar_url} alt={id} className="rounded-md" />
-                      </figure>
+                         <span className="hidden">
+                         {createdAt?.toLocaleString()}
+                         </span>
 
-                      <p className=" flex flex-col pl-2 justify-center">
-                        <span className="flex items-center gap-1">
-                          {" "}
-                          <strong className="flex text-[10px] flex-wrap leading-4 text-slate-900 font-LexendFont small:text-[12px]">
-                            {firstAndSecondName}
-                          </strong>
-                          <span className="text-[7px] px-1 h-4 bg-purple-200 rounded-full text-purple-500 font-bold grid place-content-center small:text-[10px] small:px-2">
+                          {/* <p className="flex text-[8px] mt-4 absolute px-2 bg-white shadow-md w-[240px] py-4 rounded-md">
+                            {bio}
+                          </p> */}
+                        </section>
+                      </header>
+
+                      <ul className="flex gap-2">
+
+                        <li className="flex px-2 bg-orange-100 py-1 rounded-full gap-[6px] items-start">
+                          <span
+                            className="font-LexendFont
+    text-[12px] font-normal text-orange-800"
+                          >
+                            <User2 size={14} />
+                          </span>
+
+                          
+
+                          <span
+                            className="font-LexendFont
+    text-[10px] font-semibold
+    "
+                          >
+                            {followers}
+                          </span>
+                        </li>
+
+                        <li className="flex px-3 bg-green-100 py-1 rounded-full gap-[6px] items-start">
+                          <span
+                            className="font-LexendFont
+    text-[12px] font-normal text-green-800
+    "
+                          >
+                            <Archive size={14} />
+                          </span>
+
+                          <span
+                            className="font-LexendFont
+    text-[10px] font-semibold
+    "
+                          >
+                            {public_repos}
+                          </span>
+                        </li>
+
+                        <li className="flex px-3 bg-orange-100 py-1 rounded-full gap-[6px] items-start">
+                          <span
+                            className="font-LexendFont
+    text-[12px] font-normal text-orange-800
+    "
+                          >
+                            <Star size={14} />
+                          </span>
+
+                          <span
+                            className="font-LexendFont
+    text-[10px] font-semibold
+    "
+                          >
+                            {totalStart}
+                          </span>
+                        </li>
+
+                        <li className="flex px-3 bg-purple-100 py-1 rounded-full gap-[6px] items-end">
+                          <span
+                            className="font-LexendFont
+    text-[12px] font-normal text-purple-800
+    "
+                          >
+                            <Layers3 size={14} />
+                          </span>
+
+                          <span
+                            className="font-LexendFont
+    text-[10px] font-semibold
+    "
+                          >
                             {stack}
                           </span>
-                        </span>
-                        <span className="text-[8px] text-zinc-600 font-LexendFont">
-                          @{login?.toLocaleLowerCase()}
-                        </span>
-                      </p>
-                    </header>
+                        </li>
+                      </ul>
+                    </section>
 
-                    <article className="flex w-[120px] justify-center gap-4">
-                      <div className="flex flex-col items-center justify-center gap-1">
-                        <ArchiveIcon
-                          size={14}
-                          strokeWidth={2}
-                          className="text-orange-500"
-                        />
-                        <p className="font-semibold font-LexendFont text-[11px] small:text-[14px]">
-                          {public_repos}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-col items-center justify-center gap-1">
-                        <User2
-                          size={14}
-                          strokeWidth={2}
-                          className="text-orange-500"
-                        />
-                        <p className="font-semibold font-LexendFont text-[11px] small:text-[14px]">
-                          {followers}
-                        </p>
-                      </div>
-
-                      <div className="flex flex-col items-center justify-center gap-1">
-                        <StarIcon
-                          size={14}
-                          strokeWidth={2}
-                          className="text-orange-500"
-                        />
-                        <p className="font-semibold font-LexendFont text-[11px] small:text-[14px]">
-                          {totalStart}
-                        </p>
-                      </div>
-                    </article>
-
-                    <nav className="h-10 w-10 grid place-content-center z-50 relative hover:bg-zinc-100 rounded-full cursor-pointer"
-                    onClick={()=>setIsOpenId(id)}
+                    <nav
+                      className="h-10 w-10 grid place-content-center z-50 relative hover:bg-zinc-100 rounded-full cursor-pointer"
+                      onClick={() => setIsOpenId(id)}
                     >
+                      <EllipsisVertical
+                        size={20}
+                        className="text-purple-950 relative"
+                      />
 
-                      <EllipsisVertical size={20} className="text-purple-950 relative" />                    
-                      
-                      {
-                        isOpenId == id ? <ManagerUser user={id} /> : null
-                      }
+                      {isOpenId == id ? <ManagerUser user={id} /> : null}
                     </nav>
-              
                   </section>
-
                 </>
               );
             }
