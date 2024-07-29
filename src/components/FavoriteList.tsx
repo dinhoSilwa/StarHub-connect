@@ -108,10 +108,10 @@ export const FavoriteList = () => {
 
                       <ul className="flex gap-2">
 
-                        <li className="flex px-2 bg-orange-100 py-1 rounded-full gap-[6px] items-start">
+                        <li className="flex px-2 bg-green-100 py-1 rounded-full gap-[6px] items-start">
                           <span
                             className="font-LexendFont
-    text-[12px] font-normal text-orange-800"
+    text-[12px] font-normal text-green-800"
                           >
                             <User2 size={14} />
                           </span>
@@ -127,12 +127,14 @@ export const FavoriteList = () => {
                           </span>
                         </li>
 
-                        <li className="flex px-3 bg-green-100 py-1 rounded-full gap-[6px] items-start">
+                        <li className="flex px-3 bg-red-100 py-1 rounded-full gap-[6px] items-start">
                           <span
                             className="font-LexendFont
-    text-[12px] font-normal text-green-800
+    text-[12px] font-normal text-red-800
     "
                           >
+
+
                             <Archive size={14} />
                           </span>
 
@@ -145,10 +147,10 @@ export const FavoriteList = () => {
                           </span>
                         </li>
 
-                        <li className="flex px-3 bg-orange-100 py-1 rounded-full gap-[6px] items-start">
+                        <li className="flex px-3 bg-yellow-100 py-1 rounded-full gap-[6px] items-start">
                           <span
                             className="font-LexendFont
-    text-[12px] font-normal text-orange-800
+    text-[12px] font-normal text-yellow-800
     "
                           >
                             <Star size={14} />
