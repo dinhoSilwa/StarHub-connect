@@ -22,4 +22,6 @@ export interface GithubersType {
     | "AR/VR"
     | "blockchain"
     | "cloud";
+    
+    createdAt?: Date | number
 }
