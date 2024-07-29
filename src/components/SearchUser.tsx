@@ -48,7 +48,7 @@ export const SearchUser = () => {
     <>
       <form
         action=""
-        className="flex flex-col py-8 gap-4 small:px-4 bg-slate-200 w-[95%] rounded-xl mr-auto ml-auto mt-4 mb-8"
+        className="flex flex-col py-8 gap-4 small:px-4 bg-slate-200 w-[95%] rounded-xl mr-auto ml-auto mt-4 mb-8 px-2"
       >
         <label
           htmlFor="githubsearch"
@@ -64,13 +64,13 @@ export const SearchUser = () => {
             placeholder="Github name"
             required={true}
             onChange={handleSearch}
-            className=" flex-1 bg-white pl-2 rounded-md py-2 placeholder:text-[12px] font-bold text-purple-800 text-[14px] h-12 small:text-[16px]"
+            className="w-[80%] bg-white pl-2 rounded-lg py-2 placeholder:text-[12px] font-bold text-purple-800 text-[14px] h-12 small:text-[16px]"
           />{" "}
           <button
             type="button"
             onClick={searchUserByUserName}
             className={clsx(
-              "bg-purple-700 text-white font-medium px-2 rounded-lg text-[12px] w-[70px] grid place-content-center",
+              "bg-purple-700 text-white font-medium px-2 rounded-lg text-[12px] w-[60px] grid place-content-center",
               { "bg-zinc-400": userFound.length > 0 }
             )}
             disabled={userFound.length > 0 ? true : false}
