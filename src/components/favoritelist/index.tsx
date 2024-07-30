@@ -11,7 +11,7 @@ import { Favoritename } from "./Titles/usertitle";
 import { FavoriteSubTitle } from "./Titles/usersubtitle";
 import { FavoriteIconsItems } from "./iconsitems/FavoriteIconsItems";
 
-export default function FavoriteList(){
+export const FavoriteList = () =>{
   const { favoriteDataBase } = FavoriteStorage();
   const [currentListRender, setcurrentListRender] =
     useState<GithubersType[]>(favoriteDataBase);
