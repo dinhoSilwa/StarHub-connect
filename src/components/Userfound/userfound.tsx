@@ -5,12 +5,12 @@ import {
   Star,
   User2,
 } from "lucide-react";
-import { foundUserStore } from "../store/githubfound";
-import { FavoriteStorage } from "../store/Favorites";
-import { GithubersType } from "../@types/githubusers";
+import { foundUserStore } from "../../store/githubfound";
+import { FavoriteStorage } from "../../store/Favorites";
+import { GithubersType } from "../../@types/githubusers";
 import { useState } from "react";
 import clsx from "clsx";
-import { SelectStackList } from "./SelectStackList";
+import { SelectStackList } from "../Stacklist/SelectStackList";
 import { LoadingUser } from "./loadinguser";
 import { NotfoundUser } from "./notFounduser";
 

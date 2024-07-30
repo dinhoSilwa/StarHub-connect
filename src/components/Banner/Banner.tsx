@@ -1,6 +1,5 @@
 import clsx from "clsx";
-import bannerIcons from "../assets/banner/banner_01.png"
-
+import bannerIcon from '../../assets/banner/banner_01.png'
 export const BannerSection = () => {
   return (
     <>
@@ -19,7 +18,7 @@ export const BannerSection = () => {
             Desenvolvedores Favoritos
           </h2>
         </header>
-        <img src={bannerIcons} alt="" className={clsx("w-[100px]", "small:w-[140px] ")} />
+        <img src={bannerIcon} alt="" className={clsx("w-[100px]", "small:w-[140px] ")} />
       </section>
     </>
   );

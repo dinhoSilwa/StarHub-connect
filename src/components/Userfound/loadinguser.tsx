@@ -1,6 +1,6 @@
 import { EraserIcon } from 'lucide-react'
-import loadingUser from '../assets/banner/loadinggithub.png'
-import loadingHands from '../assets/banner/loadinghands.png'
+import loadingUser from '../../assets/banner/loadinggithub.png'
+import loadingHands from '../../assets/banner/loadinghands.png'
 
 export const LoadingUser = () =>{
     return(

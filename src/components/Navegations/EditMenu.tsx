@@ -5,7 +5,7 @@ import {
   UserCircle2,
 } from "lucide-react";
 import clsx from "clsx";
-import { FavoriteStorage } from "../store/Favorites";
+import { FavoriteStorage } from "../../store/Favorites";
 import { ComponentProps, useState } from "react";
 
 interface CrudUserProps extends ComponentProps<'ul'>{
@@ -35,13 +35,6 @@ export const ManagerUser = ({user, ...props} : CrudUserProps) => {
               Visualizar
             </span>
           </li>
-
-          {/* <li className="flex gap-1 items-center hover:text-purple-800">
-            <PenBox size={16} />{" "}
-            <span className="text-[14px] text-zinc-800 font-semibold hover:text-purple-800">
-              Editar
-            </span>
-          </li> */}
 
           <li className="flex gap-1 items-center hover:text-red-500"
           onClick={()=>deleteFavorites(user)}

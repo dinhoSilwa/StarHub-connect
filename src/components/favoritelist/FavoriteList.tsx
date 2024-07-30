@@ -1,15 +1,15 @@
-import { FavoriteStorage } from "../store/Favorites";
-import { extractFirstAndSecondName } from "../utils/stringutils";
-import { GithubersType } from "../@types/githubusers";
+import { FavoriteStorage } from "../../store/Favorites";
+import { extractFirstAndSecondName } from "../../utils/stringutils";
+import { GithubersType } from "../../@types/githubusers";
 import { useEffect, useState } from "react";
-import { StackListRender } from "./StackList";
+import { StackListRender } from "../Stacklist/StackList";
 import { Archive, EllipsisVertical, Layers, Star, User2 } from "lucide-react";
-import { ManagerUser } from "./EditMenu";
-import { NotListYet } from "./Notlistyet";
-import { FigureImg } from "./favoritelist/Figure/figure";
-import { Favoritename } from "./favoritelist/Titles/usertitle";
-import { FavoriteSubTitle } from "./favoritelist/Titles/usersubtitle";
-import { FavoriteIconsItems } from "./favoritelist/iconsitems/FavoriteIconsItems";
+import { ManagerUser } from "../Navegations/EditMenu";
+import { NotListYet } from "../Notlistyet";
+import { FigureImg } from "./Figure/figure";
+import { Favoritename } from "./Titles/usertitle";
+import { FavoriteSubTitle } from "./Titles/usersubtitle";
+import { FavoriteIconsItems } from "./iconsitems/FavoriteIconsItems";
 
 export const FavoriteList = () => {
   const { favoriteDataBase } = FavoriteStorage();

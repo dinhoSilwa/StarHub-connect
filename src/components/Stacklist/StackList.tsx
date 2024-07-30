@@ -1,5 +1,5 @@
 import { ComponentProps } from "react";
-import { stacksList } from "../model/allfavorites";
+import { stacksList } from "../../model/allfavorites";
 import clsx from "clsx";
 
 interface StackListProps extends ComponentProps<"nav"> {

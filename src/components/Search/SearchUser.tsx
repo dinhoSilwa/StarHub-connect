@@ -1,11 +1,11 @@
-import { formaterForSearch } from "../utils/stringutils";
-import { userNameTerm } from "../store/searchResults";
-import { searcGithubUser } from "../controller/getgithubers";
-import { foundUserStore } from "../store/githubfound";
-import { FavoriteStorage } from "../store/Favorites";
+import { formaterForSearch } from "../../utils/stringutils";
+import { userNameTerm } from "../../store/searchResults";
+import { searcGithubUser } from "../../controller/getgithubers";
+import { foundUserStore } from "../../store/githubfound";
 import clsx from "clsx";
-import { UserFound } from "./userfound";
+import { UserFound } from "../Userfound/userfound";
 import { Delete, Search } from "lucide-react";
+import { FavoriteStorage } from "../../store/Favorites";
 
 export const SearchUser = () => {
   const { term, updateTerm } = userNameTerm();
