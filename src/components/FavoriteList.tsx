@@ -3,9 +3,13 @@ import { extractFirstAndSecondName } from "../utils/stringutils";
 import { GithubersType } from "../@types/githubusers";
 import { useEffect, useState } from "react";
 import { StackListRender } from "./StackList";
-import { Archive, EllipsisVertical, Layers3, Star, User2 } from "lucide-react";
+import { Archive, EllipsisVertical, Layers, Star, User2 } from "lucide-react";
 import { ManagerUser } from "./EditMenu";
 import { NotListYet } from "./Notlistyet";
+import { FigureImg } from "./favoritelist/Figure/figure";
+import { Favoritename } from "./favoritelist/Titles/usertitle";
+import { FavoriteSubTitle } from "./favoritelist/Titles/usersubtitle";
+import { FavoriteIconsItems } from "./favoritelist/iconsitems/FavoriteIconsItems";
 
 export const FavoriteList = () => {
   const { favoriteDataBase } = FavoriteStorage();
@@ -49,7 +53,7 @@ export const FavoriteList = () => {
         />
       </header>
 
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-4 pb-20">
         {currentListRender?.length > 0 ? (
           currentListRender?.map(
             (
@@ -62,7 +66,7 @@ export const FavoriteList = () => {
                 public_repos,
                 followers,
                 stack,
-                createdAt
+                createdAt,
                 // bio
               },
               index
@@ -77,111 +81,48 @@ export const FavoriteList = () => {
                   >
                     <section className="flex flex-col gap-4">
                       <header className="flex items-start gap-2">
-                        <figure className="w-12 h-12 small:w-12 small:h-12 rounded-md ">
-                          <img
-                            src={avatar_url}
-                            alt={id}
-                            className="rounded-md"
-                          />
-                        </figure>
+                        <FigureImg imgUrl={avatar_url} altImg={name} />
 
                         <section className=" flex flex-col pl-2 justify-center">
-                          <span className="flex items-start gap-1">
-                            {" "}
-                            <strong className="flex text-[10px] flex-wrap leading-4 text-slate-900 font-LexendFont small:text-[12px]">
-                              {firstAndSecondName === "" ? login : firstAndSecondName }
-                            </strong>
-                          </span>
-                          <span className="text-[8px] text-zinc-600 font-LexendFont">
-                            @{login?.toLocaleLowerCase()}
-                          </span>
+                          <Favoritename
+                            firstAndSecondName={firstAndSecondName}
+                            login={login}
+                          />
 
-                         <span className="hidden">
-                         {createdAt?.toLocaleString()}
-                         </span>
+                          <FavoriteSubTitle login={login} />
 
-                          {/* <p className="flex text-[8px] mt-4 absolute px-2 bg-white shadow-md w-[240px] py-4 rounded-md">
-                            {bio}
-                          </p> */}
+                          <span className="hidden">
+                            {createdAt?.toLocaleString()}
+                          </span>
                         </section>
                       </header>
 
                       <ul className="flex gap-2">
+                        <FavoriteIconsItems
+                          icon={<User2 size={16} className="text-green-800" />}
+                          favoriteData={followers}
+                          itemType={"followers"}
+                        />
 
-                        <li className="flex px-2 bg-green-100 py-1 rounded-full gap-[6px] items-start">
-                          <span
-                            className="font-LexendFont
-    text-[12px] font-normal text-green-800"
-                          >
-                            <User2 size={14} />
-                          </span>
+                        <FavoriteIconsItems
+                          icon={<Archive size={16} className="text-red-800" />}
+                          favoriteData={public_repos}
+                          itemType={"Archive"}
+                        />
 
-                          
+                        <FavoriteIconsItems
+                          icon={<Star size={16} className="text-yellow-800" />}
+                          favoriteData={totalStart}
+                          itemType={"star"}
+                        />
 
-                          <span
-                            className="font-LexendFont
-    text-[10px] font-semibold
-    "
-                          >
-                            {followers}
-                          </span>
-                        </li>
-
-                        <li className="flex px-3 bg-red-100 py-1 rounded-full gap-[6px] items-start">
-                          <span
-                            className="font-LexendFont
-    text-[12px] font-normal text-red-800
-    "
-                          >
-
-
-                            <Archive size={14} />
-                          </span>
-
-                          <span
-                            className="font-LexendFont
-    text-[10px] font-semibold
-    "
-                          >
-                            {public_repos}
-                          </span>
-                        </li>
-
-                        <li className="flex px-3 bg-yellow-100 py-1 rounded-full gap-[6px] items-start">
-                          <span
-                            className="font-LexendFont
-    text-[12px] font-normal text-yellow-800
-    "
-                          >
-                            <Star size={14} />
-                          </span>
-
-                          <span
-                            className="font-LexendFont
-    text-[10px] font-semibold
-    "
-                          >
-                            {totalStart}
-                          </span>
-                        </li>
-
-                        <li className="flex px-3 bg-purple-100 py-1 rounded-full gap-[6px] items-end">
-                          <span
-                            className="font-LexendFont
-    text-[12px] font-normal text-purple-800
-    "
-                          >
-                            <Layers3 size={14} />
-                          </span>
-
-                          <span
-                            className="font-LexendFont
-    text-[10px] font-semibold
-    "
-                          >
-                            {stack}
-                          </span>
-                        </li>
+                        <FavoriteIconsItems
+                          icon={
+                            <Layers size={16} className="text-purple-800" />
+                          }
+                          favoriteData={stack}
+                          itemType={"stack"}
+                        />
                       </ul>
                     </section>
 
