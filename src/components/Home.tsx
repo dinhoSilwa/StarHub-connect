@@ -11,6 +11,7 @@ export const HomePage = () => {
         <BannerSection />
         <SearchUser />
         <FavoriteList />
+        
       </main>
     </>
   );
