@@ -1,6 +1,6 @@
 import { BannerSection } from "./Banner/Banner";
 import { Header } from "./Header";
-import { FavoriteList } from "./Favoritelist/FavoriteList";
+import { FavoriteList } from "./Favoritelist/FavoriteListComp";
 import { SearchUser } from "./Search/SearchUser";
 
 export const HomePage = () => {
@@ -11,7 +11,7 @@ export const HomePage = () => {
         <BannerSection />
         <SearchUser />
         <FavoriteList />
-        <FavoriteList />
+        
         
       </main>
     </>
