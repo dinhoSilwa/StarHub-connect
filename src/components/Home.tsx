@@ -1,7 +1,7 @@
 import { BannerSection } from "../components/Banner/Banner";
 import { Header } from "./Header";
 import { SearchUser } from "../components/Search/SearchUser";
-import { FavoriteList } from "../components/Favoritelist/index"
+import { FavoriteList } from "./favoritelist";
 
 export const HomePage = () => {
   return (
