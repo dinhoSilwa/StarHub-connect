@@ -1,7 +1,10 @@
 import clsx from "clsx";
 import { BellIcon, EllipsisVertical } from "lucide-react";
+import { useUserNameStore } from "../store/usrname";
 
 export const Header = () => {
+  const { usernameLogin } = useUserNameStore();
+
   return (
     <>
       <header className="h-20 flex items-center justify-start gap-2 px-4 mb-4">
@@ -14,16 +17,16 @@ export const Header = () => {
             "small:text-[18px]"
           )}
         >
-          Olá, Dinho👋
+          Olá, {usernameLogin} 👋
         </h2>
 
         <section className="flex-1 flex justify-end px-4 items-center gap-4">
           <figure className="h-10 w-10 bg-zinc-100 grid place-content-center rounded-full">
             <BellIcon size={20} className="text-purple-800" />
           </figure>
-         
+
           <nav role="navegação h-10 w-10">
-          <EllipsisVertical className="text-purple-dark" />
+            <EllipsisVertical className="text-purple-dark" />
           </nav>
         </section>
       </header>
