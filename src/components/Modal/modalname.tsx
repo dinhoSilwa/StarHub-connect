@@ -6,7 +6,10 @@ import { formaterForSearch } from "../../utils/stringutils";
 import { useUserNameStore } from "../../store/usrname";
 
 export const ModalName = () => {
-  const [inputSearch, setinputSearch] = useState({});
+  interface IinputSearch {
+    username?: string;
+  }
+  const [inputSearch, setinputSearch] = useState<IinputSearch>({});
   const { setUsername, usernameLogin } = useUserNameStore();
 
   const usernameSchema = Yup.object().shape({
@@ -26,7 +29,9 @@ export const ModalName = () => {
     const isCheck = type === "checkbox";
 
     setinputSearch((prevState) => {
-      const formatted = isCheck ? formaterForSearch(prevState.username) : value;
+      const formatted = isCheck
+        ? formaterForSearch(prevState.username ?? "")
+        : value;
       return {
         ...prevState,
         username: formatted,
