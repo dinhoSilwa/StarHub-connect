@@ -1,14 +1,19 @@
 import clsx from "clsx";
 import { BellIcon, EllipsisVertical } from "lucide-react";
 import { useUserNameStore } from "../store/usrname";
+import { modalProfileStore } from "../store/ModalControler";
 
 export const Header = () => {
   const { usernameLogin } = useUserNameStore();
+  const { setisOpenModalProfile } = modalProfileStore();
 
   return (
     <>
       <header className="h-20 flex items-center justify-start gap-2 px-4 mb-4">
-        <figure className="bg-zinc-200 h-10 w-10 rounded-full overflow-hidden">
+        <figure
+          className="bg-zinc-200 h-10 w-10 rounded-full overflow-hidden"
+          onClick={setisOpenModalProfile}
+        >
           <img src="profile" alt="" />
         </figure>
         <h2
