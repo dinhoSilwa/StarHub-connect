@@ -29,22 +29,20 @@ export const StackListRender: React.FC<StackListProps> = ({
       <ul className="flex overflow-x-auto items-center gap-2 justify-between h-16 small:h-24">
         {stacksList.map(({ stackname }, index) => {
           return (
-            <>
-              <li
-                role={`${stackname} item da lista`}
-                title={stackname}
-                key={index}
-                className={clsx(
-                  "w-[230px] px-4 py-2 flex flex-row rounded-full font-semibold font-LexendFont text-[12px] cursor-pointer",
-                  {
-                    "bg-purple-dark text-white": currentStackList === stackname,
-                  }
-                )}
-                onClick={() => handleStack(stackname)}
-              >
-                {stackname}
-              </li>
-            </>
+            <li
+            role={`${stackname} item da lista`}
+            title={stackname}
+            key={index}
+            className={clsx(
+              "w-[230px] px-4 py-2 flex flex-row rounded-full font-semibold font-LexendFont text-[12px] cursor-pointer",
+              {
+                "bg-purple-dark text-white": currentStackList === stackname,
+              }
+            )}
+            onClick={() => handleStack(stackname)}
+          >
+            {stackname}
+          </li>
           );
         })}
       </ul>
