@@ -1,12 +1,10 @@
 import "./App.css";
-import { HomePage } from "./components/Home";
-import { ModalName } from "./components/Modal/modalname";
-import { useUserNameStore } from "./store/usrname";
+import  {HomePage}  from "./components/Home";
 
 function App() {
-  const { usernameLogin } = useUserNameStore();
-
-  return <>{usernameLogin ? <HomePage /> : <ModalName />}</>;
+ return(
+  <HomePage />
+ )
 }
 
 export default App;
