@@ -6,10 +6,7 @@ import { useUserNameStore } from "../store/usrname";
 import { ModalName } from "./Modal/modalname";
 import { ContainerGlobalModal } from "./Modal/ContainerModal";
 
-
-
 export const HomePage = () => {
-
   const {usernameLogin} = useUserNameStore()
 
   return (
