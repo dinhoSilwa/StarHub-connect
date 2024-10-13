@@ -1,10 +1,11 @@
 import clsx from "clsx";
 import { useSetName } from "../../hook/user/useSetName";
 import { useUserNameStore } from "../../store/usrname";
+import { LoaderCircle } from "lucide-react";
 
 export const ModalName = () => {
-  const { handleSubmit, errors, register, watch } = useSetName();
-  const {usernameLogin} = useUserNameStore()
+  const { handleSubmit, errors, register, watch, isLoading } = useSetName();
+  const { usernameLogin } = useUserNameStore();
 
   const username = watch("username");
 
@@ -41,7 +42,14 @@ export const ModalName = () => {
             type="submit"
             className="h-10 bg-purple-700 px-4 py-2 rounded-md text-white"
           >
-            {usernameLogin ? "Editar" : "Salvar"}
+            {isLoading ? (
+              <span className="flex gap-2">
+                {" "}
+                <LoaderCircle className="animate-spin" /> Salvando...
+              </span>
+            ) : (
+              <span>{usernameLogin ? "Editar" : "Salvar"}</span>
+            )}
           </button>
         </fieldset>
 

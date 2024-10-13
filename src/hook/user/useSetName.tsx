@@ -5,9 +5,10 @@ import * as Yup from "yup";
 import { useUserNameStore } from "../../store/usrname";
 
 export const useSetName = () => {
-
-  const {setUsername} = useUserNameStore()
-  const [firstName, setFirstname] = useState<string | null>( null)
+  let timeout = 3000;
+  const { setUsername } = useUserNameStore();
+  const [firstName, setFirstname] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
   const userNameSchema = Yup.object().shape({
     username: Yup.string().required("Digite O nome"),
   });
@@ -22,16 +23,22 @@ export const useSetName = () => {
   });
 
   const onSubmitUserName = (data: any) => {
-    const {username} = data
-    const firstName = username.split(' ')[0]
-    setFirstname(firstName)
-    setUsername(firstName)
+    setIsLoading(true);
+
+    setTimeout(() => {
+      const { username } = data;
+      const firstName = username.split(" ")[0];
+      setFirstname(firstName);
+      setUsername(firstName);
+      setIsLoading(false);
+    }, timeout);
   };
   return {
     handleSubmit: handleSubmit(onSubmitUserName),
     register,
     watch,
     errors,
-    firstName
+    firstName,
+    isLoading,
   };
 };
