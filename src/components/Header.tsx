@@ -2,10 +2,12 @@ import clsx from "clsx";
 import { BellIcon, EllipsisVertical } from "lucide-react";
 import { useUserNameStore } from "../store/usrname";
 import { modalProfileStore } from "../store/ModalControler";
+import { ProfileStore } from "../store/profileStore";
 
 export const Header = () => {
-  const { usernameLogin } = useUserNameStore();
   const { setisOpenModalProfile } = modalProfileStore();
+  const { dataUser, deleteDataUser } = ProfileStore();
+  console.log("Tentativa de trazer", dataUser);
 
   return (
     <>
@@ -14,15 +16,18 @@ export const Header = () => {
           className="bg-zinc-200 h-10 w-10 rounded-full overflow-hidden"
           onClick={setisOpenModalProfile}
         >
-          <img src="profile" alt="" />
+          <img src={dataUser?.avatar_url} alt="" />
         </figure>
         <h2
           className={clsx(
-            "font-bold text-[14px] font-LexendFont text-zinc-800",
+            "font-bold text-[14px] font-LexendFont text-zinc-800 group",
             "small:text-[18px]"
           )}
         >
-          Olá, {usernameLogin} 👋
+          Olá, {dataUser?.login} 👋
+          <button className="invisible group-hover:visible text-sm font-normal" onClick={deleteDataUser}>
+            Logout
+          </button>
         </h2>
 
         <section className="flex-1 flex justify-end px-4 items-center gap-4">
