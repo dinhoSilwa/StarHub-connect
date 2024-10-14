@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import { BellIcon, EllipsisVertical } from "lucide-react";
-import { useUserNameStore } from "../store/usrname";
 import { modalProfileStore } from "../store/ModalControler";
 import { ProfileStore } from "../store/profileStore";
 
