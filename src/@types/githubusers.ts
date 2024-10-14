@@ -25,3 +25,14 @@ export interface GithubersType {
     
     createdAt?: Date | number
 }
+
+
+export interface GithubResponseInterface {
+  login?: string;
+  name: string;
+  avatar_url: string;
+  followers: number;
+  repos_url: string;
+  public_repos: number;
+  bio: string;
+}
