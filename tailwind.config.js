@@ -26,7 +26,9 @@ export default {
       },
       fontFamily : {
         "Montserrat": ["Montserrat", "sans-serif"],
-        "LexendFont": ["Lexend", "sans-serif"]
+        "LexendFont": ["Lexend", "sans-serif"],
+        'source-code': ['"Source Code Pro"', 'monospace'],
+
       }
     },
     
