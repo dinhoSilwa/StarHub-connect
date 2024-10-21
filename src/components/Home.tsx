@@ -1,5 +1,5 @@
 import { BannerSection } from "../components/Banner/Banner";
-import { Header } from "./Header";
+import { Header } from "./Header/Header";
 import { SearchUser } from "../components/Search/SearchUser";
 import { FavoriteList } from "./favoritelist";
 import { ModalName } from "./Modal/modalname";
