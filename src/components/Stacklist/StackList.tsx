@@ -1,6 +1,5 @@
-import { ComponentProps } from "react";
+import { ComponentProps, useState } from "react";
 import { stacksList } from "../../model/allfavorites";
-import clsx from "clsx";
 
 interface StackListProps extends ComponentProps<"nav"> {
   currentStackList: string;
@@ -13,38 +12,26 @@ export const StackListRender: React.FC<StackListProps> = ({
   menuList,
   ...props
 }) => {
+
+  const [currentStack, setcurrentStack] = useState<string | null>(null)
   return (
     <nav
-      role="Stack-List-Navigation"
-      className="overflow-hidden  grid place-content-center small:px-2"
+      role="Stack-List-Navigation w-full"
+      className="overflow-scroll grid place-content-center"
       {...props}
     >
-          <h2
-          className="text-[12px] font-bold text-purple-dark 
-      font-Montserrat small:px-0
-      "
-        >
-          Lista de favoritos
-        </h2>
-      <ul className="flex overflow-x-auto items-center gap-2 justify-between h-16 small:h-24">
-        {stacksList.map(({ stackname }, index) => {
-          return (
-            <li
-            role={`${stackname} item da lista`}
-            title={stackname}
+      <ul className="flex overflow-x-auto space-x-2 p-4">
+        {stacksList.map(({ icon, stackname }, index) => (
+          <li
+            className={`w-40 h-40 text-white font-LexendFont px-12 flex flex-col justify-center items-center gap-2 rounded-md  ${currentStack === stackname ? 'bg-[#ffc171] text-orange-700 font-bold' : 'bg-zinc-200 text-bgDark-primary'}`}
             key={index}
-            className={clsx(
-              "w-[230px] px-4 py-2 flex flex-row rounded-full font-semibold font-LexendFont text-[12px] cursor-pointer",
-              {
-                "bg-purple-dark text-white": currentStackList === stackname,
-              }
-            )}
-            onClick={() => handleStack(stackname)}
+            onClick={()=> setcurrentStack(stackname)}
+
           >
-            {stackname}
+            <span className="text-[32px] rounded-lg" style={{textShadow: '2px 2px 4px #ef6307'}}>{icon}</span>
+            <span>{stackname}</span>
           </li>
-          );
-        })}
+        ))}
       </ul>
     </nav>
   );

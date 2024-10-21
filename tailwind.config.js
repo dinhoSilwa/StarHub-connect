@@ -22,7 +22,9 @@ export default {
         'purple-light': '#EBE5FF',
         'purple-dark': '#2C0076',
         'yellow-icon': '#FCC313',
-        'banner-title' : '#51169C'
+        'banner-title' : '#51169C',
+        'bgDark-primary' : "#181829",
+        'bgDark-second' : "#5a58aa"
       },
       fontFamily : {
         "Montserrat": ["Montserrat", "sans-serif"],

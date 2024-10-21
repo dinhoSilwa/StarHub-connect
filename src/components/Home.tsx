@@ -14,7 +14,7 @@ export const HomePage = () => {
         {!dataUser?.login && <ContainerGlobalModal children={<ModalName />} />}
         <Header />
         <BannerSection />
-        <SearchUser />
+        {/* <SearchUser /> */}
         <FavoriteList />
       </main>
     </>

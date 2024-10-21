@@ -44,7 +44,7 @@ export const FavoriteList = () =>{
   };
 
   return (
-    <section className="flex flex-col px-4 bg-zinc-200 gap-2 py-2">
+    <section className="flex flex-col px-4 gap-2 py-2">
       <header className="mt-2 mb-2 w-full">
         <StackListRender
           handleStack={handleStack}
