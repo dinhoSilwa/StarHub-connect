@@ -18,6 +18,9 @@ export default {
     },
 
     extend: {
+      fontSize :{
+        "xs" : "12px",
+      },
 
       colors: {
         'purple-light': '#EBE5FF',
@@ -31,7 +34,6 @@ export default {
         "Montserrat": ["Montserrat", "sans-serif"],
         "LexendFont": ["Lexend", "sans-serif"],
         'source-code': ['"Source Code Pro"', 'monospace'],
-
       }
     },
 

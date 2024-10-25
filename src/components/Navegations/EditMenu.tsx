@@ -8,7 +8,7 @@ export const NavigationStack = () => {
       <ul className="flex overflow-x-auto space-x-2 w-[90%] ml-auto mr-auto">
         {stacksList.map(({ icon, stackname }, index) => (
           <li
-            className={` ${index == 0 ? "ml-4" : ""} w-28 h-28 font-LexendFont px-12 flex flex-col justify-center items-center gap-2 rounded-md ${currentStack === stackname ? "bg-[#ffc171] font-bold text-bgDark-primary" : "bg-zinc-200 dark:bg-bgDark-second"}`}
+            className={` ${index == 0 ? "ml-0" : ""} w-28 h-28 font-LexendFont px-12 flex flex-col justify-center items-center gap-2 rounded-md ${currentStack === stackname ? "bg-[#ffc171] font-bold text-bgDark-primary" : "bg-zinc-200 dark:bg-bgDark-second"}`}
             key={index}
             onClick={() => setcurrentStack(stackname)}
           >
