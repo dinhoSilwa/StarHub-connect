@@ -1,52 +1,30 @@
-import {
-  CircleXIcon,
+import { useState } from "react";
+import { stacksList } from "../../model/allfavorites";
 
-  //   PenBox,
-  UserCircle2,
-} from "lucide-react";
-import clsx from "clsx";
-import { FavoriteStorage } from "../../store/Favorites";
-import { ComponentProps, useState } from "react";
-
-interface CrudUserProps extends ComponentProps<"ul"> {
-  user: string;
-}
-
-export const ManagerUser = ({ user, ...props }: CrudUserProps) => {
-  const { deleteFavorites } = FavoriteStorage();
-  const [isOpen, setIsOpen] = useState(true);
+export const NavigationStack = () => {
+  const [currentStack, setcurrentStack] = useState<string | null>("Todas");
   return (
-    <>
-      <ul
-        {...props}
-        className={clsx(
-          "flex flex-col gap-2 px-2 small:px-4 w-[100px] small:w-[180px] py-4 shadow-md bg-white rounded-xl z-40 absolute right-0",
-          { hidden: isOpen === false }
-        )}
-      >
-        <header title="fechar Opções">
-          <CircleXIcon
-            size={16}
-            className="ml-auto"
-            onClick={() => setIsOpen(!isOpen)}
-          />
-        </header>
-
-        <li className="flex gap-1 items-center hover:text-purple-800">
-          <UserCircle2 size={16} />{" "}
-          <span className="text-[14px] text-zinc-800 font-semibold hover:text-purple-800">
-            Visualizar
-          </span>
-        </li>
-
-        <li
-          className="flex gap-1 items-center hover:text-red-500"
-          onClick={() => deleteFavorites(user)}
-        >
-          <CircleXIcon size={16} className="text-red-600" />{" "}
-          <span className="text-[14px]">Remover</span>
-        </li>
+    <nav role="Stack-List-Navigation w-full" className="overflow-scroll flex">
+      <ul className="flex overflow-x-auto space-x-2 w-[90%] ml-auto mr-auto">
+        {stacksList.map(({ icon, stackname }, index) => (
+          <li
+            className={` ${index == 0 ? "ml-4" : ""} w-28 h-28 font-LexendFont px-12 flex flex-col justify-center items-center gap-2 rounded-md ${currentStack === stackname ? "bg-[#ffc171] font-bold text-bgDark-primary" : "bg-zinc-200 dark:bg-bgDark-second"}`}
+            key={index}
+            onClick={() => setcurrentStack(stackname)}
+          >
+            <span
+              className="text-[32px] rounded-lg"
+              style={{
+                textShadow:
+                  stackname === currentStack ? "2px 2px 4px #c64908" : "none",
+              }}
+            >
+              {icon}
+            </span>
+            <span>{stackname}</span>
+          </li>
+        ))}
       </ul>
-    </>
+    </nav>
   );
 };
