@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode : "class",
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -24,7 +25,7 @@ export default {
         'yellow-icon': '#FCC313',
         'banner-title': '#51169C',
         'bgDark-primary': "#181829",
-        'bgDark-second': "#5a58aa"
+        'bgDark-second': "#4a4b89"
       },
       fontFamily: {
         "Montserrat": ["Montserrat", "sans-serif"],

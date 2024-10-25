@@ -1,21 +1,19 @@
 import { BannerSection } from "../components/Banner/Banner";
 import { Header } from "./Header/Header";
-import { SearchUser } from "../components/Search/SearchUser";
-import { FavoriteList } from "./favoritelist";
 import { ModalName } from "./Modal/modalname";
 import { ContainerGlobalModal } from "./Modal/ContainerModal";
 import { ProfileStore } from "../store/profileStore";
+import { NavigationStack } from "./Navegations/EditMenu";
 
 export const HomePage = () => {
   const { dataUser } = ProfileStore();
   return (
     <>
-      <main className="flex flex-col pt-4">
+      <main className="flex flex-col pt-4 dark:bg-bgDark-primary">
         {!dataUser?.login && <ContainerGlobalModal children={<ModalName />} />}
         <Header />
         <BannerSection />
-        {/* <SearchUser /> */}
-        <FavoriteList />
+        <NavigationStack /> 
       </main>
     </>
   );

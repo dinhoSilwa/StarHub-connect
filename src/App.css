@@ -4,17 +4,7 @@
   list-style: none;
   border: none;
 }
-*{
-  outline: 1px solid red;
-}
 
-.banner-gradiente{
-  background: rgb(0,0,0);
-background: -moz-linear-gradient(349deg, rgba(0,0,0,1) 0%, rgba(255,215,72,1) 1%, rgba(255,219,70,1) 2%, rgba(255,218,69,1) 98%, rgba(255,215,72,1) 99%);
-background: -webkit-linear-gradient(349deg, rgba(0,0,0,1) 0%, rgba(255,215,72,1) 1%, rgba(255,219,70,1) 2%, rgba(255,218,69,1) 98%, rgba(255,215,72,1) 99%);
-background: linear-gradient(349deg, rgba(0,0,0,1) 0%, rgba(255,215,72,1) 1%, rgba(255,219,70,1) 2%, rgba(255,218,69,1) 98%, rgba(255,215,72,1) 99%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ffd748",GradientType=1);
-}
 
 @keyframes float {
   0%, 100% {
