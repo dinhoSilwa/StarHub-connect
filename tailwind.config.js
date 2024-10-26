@@ -28,7 +28,9 @@ export default {
         'yellow-icon': '#FCC313',
         'banner-title': '#51169C',
         'bgDark-primary': "#181829",
-        'bgDark-second': "#4a4b89"
+        'bgDark-second': "#4a4b89",
+        "bgDark-intense" : "#2B2B3D"
+
       },
       fontFamily: {
         "Montserrat": ["Montserrat", "sans-serif"],
