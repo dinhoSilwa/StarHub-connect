@@ -5,6 +5,7 @@ import { ContainerGlobalModal } from "./Modal/ContainerModal";
 import { ProfileStore } from "../store/profileStore";
 import { NavigationStack } from "./Navegations/EditMenu";
 import { GithubersList, GithubersProps } from "./Githubers/Lista/githubersList";
+import { ContainerList } from "./Githubers/containerList/container";
 
 export const GithubersDetails: GithubersProps[] = [
   {
@@ -32,19 +33,8 @@ export const HomePage = () => {
         <Header />
         <BannerSection />
         <NavigationStack />
-        <ul className=" w-[345px] py-4 ml-auto mr-auto flex flex-col gap-2 items-center">
-          {GithubersDetails?.map(({avatar,  username, nickname, stack , stackIcon}) => (
-            <li className=" w-full">
-              <GithubersList
-              avatar={avatar}
-                username={username}
-                nickname={nickname}
-                stackIcon={stackIcon}
-                stack={stack}
-              />
-            </li>
-          ))}
-        </ul>
+        <ContainerList />
+ 
       </main>
     </>
   );

@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {ChevronRight } from "lucide-react";
 import type { ComponentProps } from "react";
 
 export interface GithubersProps extends ComponentProps<"article"> {
