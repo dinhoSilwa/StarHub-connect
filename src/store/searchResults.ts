@@ -1,12 +1,21 @@
-import { create } from "zustand"
+import { create } from "zustand";
 
 export interface SearchTerms {
-  term: string,
-  updateTerm: (term: string) => void;
-  deleteTerm: () => void;
+  term: string;
+  setSearchTerm: (term: string) => void;
+  clearTerm: () => void;
+  isActive: boolean;
+  setIsActive: () => void;
 }
-export const userNameTerm = create<SearchTerms>()((set) => ({
-  term: '',
-  updateTerm: (newterm: string) => set({term: newterm}),
-  deleteTerm: () => set({term : ''})
-}))
+
+export const userNameTerm = create<SearchTerms>((set) => ({
+  isActive: false,
+  term: "",
+  
+  setIsActive: () => set((state) => ({ isActive: !state.isActive })),
+  
+  setSearchTerm: (newTerm: string) =>
+    set({ term: newTerm.replace(/\s+/g, "").trim().toLowerCase() }),
+  
+  clearTerm: () => set({ term: "" }),
+}));

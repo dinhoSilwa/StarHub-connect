@@ -6,6 +6,7 @@ import { ProfileStore } from "../store/profileStore";
 import { NavigationStack } from "./Navegations/EditMenu";
 import { GithubersList, GithubersProps } from "./Githubers/Lista/githubersList";
 import { ContainerList } from "./Githubers/containerList/container";
+import { SearchUserBar } from "./Search/searchBar";
 
 export const GithubersDetails: GithubersProps[] = [
   {
@@ -34,6 +35,7 @@ export const HomePage = () => {
         <BannerSection />
         <NavigationStack />
         <ContainerList />
+        <SearchUserBar />
  
       </main>
     </>
