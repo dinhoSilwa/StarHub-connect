@@ -1,11 +1,11 @@
-import { GithubersDetails } from "../../Home";
+import { githubersDetailsList } from "../../Home";
 import { GithubersList } from "../Lista/githubersList";
 
-export const ContainerList = () => {
+export const GithubersListContainer = () => {
   return (
     <section>
       <ul className=" w-[345px] py-4 ml-auto mr-auto flex flex-col gap-2 items-center">
-        {GithubersDetails?.map(
+        {githubersDetailsList?.map(
           ({ avatar, username, nickname, stack, stackIcon }, index) => (
             <li className=" w-full" key={index}>
               <GithubersList

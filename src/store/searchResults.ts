@@ -7,16 +7,16 @@ export interface SearchTerms {
   setUserFound: (data: GithubUserResponse) => void;
   setSearchTerm: (term: string) => void;
   clearTerm: () => void;
-  isActiveSearch: boolean;
+  isSearchActive: boolean;
   setIsActiveSearchModal: () => void;
 }
 
-export const SerachUsername = create<SearchTerms>((set) => ({
-  isActiveSearch: false,
+export const SerachUsernameStore = create<SearchTerms>((set) => ({
+  isSearchActive: false,
   term: "",
   userFound: null,
   setIsActiveSearchModal: () =>
-    set((state) => ({ isActiveSearch: !state.isActiveSearch })),
+    set((state) => ({ isSearchActive: !state.isSearchActive })),
 
   setSearchTerm: (newTerm: string) =>
     set({
@@ -24,5 +24,5 @@ export const SerachUsername = create<SearchTerms>((set) => ({
     }),
   setUserFound: (data: GithubUserResponse) => set({ userFound: data }),
 
-  clearTerm: () => set({ term: "" , userFound : null}),
+  clearTerm: () => set({ term: "", userFound: null }),
 }));

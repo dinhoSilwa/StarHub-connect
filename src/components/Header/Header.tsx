@@ -1,13 +1,13 @@
 import clsx from "clsx";
 import { BellIcon, MoonIcon, SearchIcon, SunMoonIcon } from "lucide-react";
 import { useToggleTheme } from "../../store/ThemeStore/themeStore";
-import { userProfileGithubName } from "../../store/usrname";
-import { SerachUsername } from "../../store/searchResults";
+import { userProfileGithubName } from "../../store/profileName";
+import { SerachUsernameStore } from "../../store/searchResults";
 
 export const Header = () => {
   const { setTheme, theme } = useToggleTheme();
   const { userNameProfile } = userProfileGithubName();
-  const { setIsActiveSearchModal } = SerachUsername();
+  const { setIsActiveSearchModal } = SerachUsernameStore();
 
   return (
     <>

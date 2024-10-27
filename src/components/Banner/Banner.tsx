@@ -1,5 +1,10 @@
 import clsx from "clsx";
+import { useEffect } from "react";
 export const BannerSection = () => {
+  useEffect(() =>{
+    console.time("BannerSection Render Time")
+    console.timeEnd("BannerSection Render Time")
+  },[])
   return (
     <>
       <section

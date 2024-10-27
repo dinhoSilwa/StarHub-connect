@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { stacksList } from "../../model/allfavorites";
 
-export const NavigationStack = () => {
+export const EditMenuNavigationStack = () => {
   const [currentStack, setcurrentStack] = useState<string | null>("Todas");
   return (
     <nav role="Stack-List-Navigation w-full" className="overflow-scroll flex">

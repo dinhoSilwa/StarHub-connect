@@ -4,10 +4,9 @@ import ReactDOM from "react-dom";
 interface ModalProps {
   children: ReactNode;
 }
-export const ContainerGlobalModal: React.FC<ModalProps> = ({
+export const GlobalModalContainer: React.FC<ModalProps> = ({
   children,
 }: ModalProps) => {
-
   const modalRoot = document.getElementById("modal");
   if (!modalRoot) return null;
   return ReactDOM.createPortal(

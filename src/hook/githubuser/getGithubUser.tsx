@@ -9,15 +9,15 @@ import type {
   GithubErrorResponse,
   GithubUserResponse,
 } from "../../@types/githubusers";
-import { SerachUsername } from "../../store/searchResults";
-import { userProfileGithubName } from "../../store/usrname";
+import { SerachUsernameStore } from "../../store/searchResults";
+import { userProfileGithubName } from "../../store/profileName";
 
 interface GithubuserProps {
   isUserProfile: boolean | null;
 }
 
 export const useGithub = ({ isUserProfile }: GithubuserProps) => {
-  const { setUserFound } = SerachUsername();
+  const { setUserFound } = SerachUsernameStore();
   const { setGithubProfileName } = userProfileGithubName();
   const api = useHTTP();
   const QUERY_KEY = ["get-githubuser"] as const;
@@ -65,7 +65,7 @@ export const useGithub = ({ isUserProfile }: GithubuserProps) => {
   });
 
   const onSubmit = (data: any) => {
-    const {username} = data
+    const { username } = data;
     mutation.mutate(username);
   };
 

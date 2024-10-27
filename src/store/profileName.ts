@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-interface IUsername {
+interface ProfileName {
   userNameProfile: string;
   setGithubProfileName: (username: string) => void;
   clearGithubProfileName: () => void;
 }
 
-export const userProfileGithubName = create<IUsername>()(
+export const userProfileGithubName = create<ProfileName>()(
   persist(
     (set) => ({
       userNameProfile: "",
