@@ -1,18 +1,13 @@
 import clsx from "clsx";
-import {
-  BellIcon,
-  MoonIcon,
-  SearchIcon,
-  SunIcon,
-  SunMoon,
-  SunMoonIcon,
-} from "lucide-react";
-import { ProfileStore } from "../../store/profileStore";
+import { BellIcon, MoonIcon, SearchIcon, SunMoonIcon } from "lucide-react";
 import { useToggleTheme } from "../../store/ThemeStore/themeStore";
+import { userProfileGithubName } from "../../store/usrname";
+import { SerachUsername } from "../../store/searchResults";
 
 export const Header = () => {
-  const { dataUser } = ProfileStore();
   const { setTheme, theme } = useToggleTheme();
+  const { userNameProfile } = userProfileGithubName();
+  const { setIsActiveSearchModal } = SerachUsername();
 
   return (
     <>
@@ -32,12 +27,16 @@ export const Header = () => {
               "md:text-lg"
             )}
           >
-            {dataUser?.login}
+            {userNameProfile}
           </h2>
         </div>
-        <section className="w-1/3 flex-1 flex justify-end items-center gap-4">
+        <nav className="w-1/3 flex-1 flex justify-end items-center gap-4">
           <figure className="flex gap-4 items-center">
-            <SearchIcon size={24} className="text-bgDark-second" />
+            <SearchIcon
+              size={24}
+              className="text-bgDark-second"
+              onClick={setIsActiveSearchModal}
+            />
             <BellIcon size={24} className="text-bgDark-second" />
             {theme ? (
               <MoonIcon
@@ -53,7 +52,7 @@ export const Header = () => {
               />
             )}
           </figure>
-        </section>
+        </nav>
       </header>
     </>
   );

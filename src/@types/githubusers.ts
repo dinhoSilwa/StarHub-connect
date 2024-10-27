@@ -8,12 +8,12 @@ export interface GithubersType {
   totalStart: number;
   public_repos: number;
   bio: string;
-  stack?: 
-    | "backend" 
-    | "frontend" 
-    | "fullstack" 
-    | "mobile" 
-    | "devops" 
+  stack?:
+    | "backend"
+    | "frontend"
+    | "fullstack"
+    | "mobile"
+    | "devops"
     | "data science"
     | "machine learning"
     | "AI"
@@ -22,12 +22,11 @@ export interface GithubersType {
     | "AR/VR"
     | "blockchain"
     | "cloud";
-    
-    createdAt?: Date | number
+
+  createdAt?: Date | number;
 }
 
-
-export interface GithubResponseInterface {
+export interface GithubUserResponse {
   login?: string;
   name: string;
   avatar_url: string;
@@ -35,4 +34,10 @@ export interface GithubResponseInterface {
   repos_url: string;
   public_repos: number;
   bio: string;
+}
+
+export interface GithubErrorResponse {
+  message: string;
+  documentation_url: string;
+  status: any;
 }
