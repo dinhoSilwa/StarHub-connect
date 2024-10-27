@@ -23,10 +23,10 @@ export const GithubersList = ({
           <img src={avatar} alt={username} className="inline-block w-10 h-10 rounded-full"/>
           <span className="grid place-content-center text-lg leading-0 w-10 h-10 rounded-full bg-white dark:bg-bgDark-primary">{stackIcon}</span>
         </figure>
-            <p className="flex flex-col -space-y-1 pl-2 dark:text-white">
-            <div className="text-sm font-semibold">{username}</div>
-            <div className="text-xs">{nickname}</div>
-            </p>
+            <div className="flex flex-col -space-y-1 pl-2 dark:text-white">
+            <h2 className="text-sm font-semibold">{username}</h2>
+            <h2 className="text-xs">{nickname}</h2>
+            </div>
       </div>
 
       <div className="flex-1 flex justify-end px-4">

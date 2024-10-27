@@ -1,21 +1,28 @@
 import { create } from "zustand";
+import type { GithubUserResponse } from "../@types/githubusers";
 
 export interface SearchTerms {
   term: string;
+  userFound: GithubUserResponse | null;
+  setUserFound: (data: GithubUserResponse) => void;
   setSearchTerm: (term: string) => void;
   clearTerm: () => void;
-  isActive: boolean;
-  setIsActive: () => void;
+  isActiveSearch: boolean;
+  setIsActiveSearchModal: () => void;
 }
 
-export const userNameTerm = create<SearchTerms>((set) => ({
-  isActive: false,
+export const SerachUsername = create<SearchTerms>((set) => ({
+  isActiveSearch: false,
   term: "",
-  
-  setIsActive: () => set((state) => ({ isActive: !state.isActive })),
-  
+  userFound: null,
+  setIsActiveSearchModal: () =>
+    set((state) => ({ isActiveSearch: !state.isActiveSearch })),
+
   setSearchTerm: (newTerm: string) =>
-    set({ term: newTerm.replace(/\s+/g, "").trim().toLowerCase() }),
-  
-  clearTerm: () => set({ term: "" }),
+    set({
+      term: newTerm.replace(/\s+/g, "").trim().toLowerCase(),
+    }),
+  setUserFound: (data: GithubUserResponse) => set({ userFound: data }),
+
+  clearTerm: () => set({ term: "" , userFound : null}),
 }));

@@ -2,17 +2,17 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface IUsername {
-  usernameLogin: string;
-  setUsername: (username: string) => void;
-  deleteUsername: () => void;
+  userNameProfile: string;
+  setGithubProfileName: (username: string) => void;
+  clearGithubProfileName: () => void;
 }
 
-export const useUserNameStore = create<IUsername>()(
+export const userProfileGithubName = create<IUsername>()(
   persist(
     (set) => ({
-      usernameLogin: "",
-      setUsername: (username) => set({ usernameLogin: username }),
-      deleteUsername: () => set({ usernameLogin: "" }),
+      userNameProfile: "",
+      setGithubProfileName: (newUserNameProfile) => set({ userNameProfile: newUserNameProfile }),
+      clearGithubProfileName: () => set({ userNameProfile: "" }),
     }),
     {
       name: "username-storage", // Nome da chave no localStorage

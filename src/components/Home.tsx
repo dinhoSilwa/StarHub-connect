@@ -1,12 +1,11 @@
 import { BannerSection } from "../components/Banner/Banner";
 import { Header } from "./Header/Header";
-import { ModalName } from "./Modal/modalname";
 import { ContainerGlobalModal } from "./Modal/ContainerModal";
-import { ProfileStore } from "../store/profileStore";
 import { NavigationStack } from "./Navegations/EditMenu";
-import { GithubersList, GithubersProps } from "./Githubers/Lista/githubersList";
+import {  GithubersProps } from "./Githubers/Lista/githubersList";
 import { ContainerList } from "./Githubers/containerList/container";
 import { SearchUserBar } from "./Search/searchBar";
+import { SerachUsername } from "../store/searchResults";
 
 export const GithubersDetails: GithubersProps[] = [
   {
@@ -14,29 +13,27 @@ export const GithubersDetails: GithubersProps[] = [
     username: "Osvaldo cruz",
     nickname: "osvaldinho",
     stack: "Frontend",
-    stackIcon : "⭐"
+    stackIcon: "⭐",
   },
   {
     avatar: "https://avatars.githubusercontent.com/u/022248?v=4",
     username: "Kakai Tamar",
     nickname: "kakaitata",
     stack: "Backend",
-    stackIcon : "🤖"
+    stackIcon: "🤖",
   },
 ];
 
 export const HomePage = () => {
-  const { dataUser } = ProfileStore();
+  const { isActiveSearch} = SerachUsername();
   return (
     <>
       <main className="flex flex-col pt-4 dark:bg-bgDark-primary">
-        {!dataUser?.login && <ContainerGlobalModal children={<ModalName />} />}
         <Header />
         <BannerSection />
         <NavigationStack />
         <ContainerList />
-        <SearchUserBar />
- 
+        {isActiveSearch && <ContainerGlobalModal children={<SearchUserBar isUserProfile={false} />} />}
       </main>
     </>
   );
