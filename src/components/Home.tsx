@@ -6,6 +6,7 @@ import { GithubersProps } from "./Githubers/Lista/githubersList";
 import { GithubersListContainer } from "./Githubers/containerList/container";
 import { SearchUsername } from "./Search/searchBar";
 import { SerachUsernameStore } from "../store/searchResults";
+import { userProfileGithubName } from "../store/profileName";
 
 export const githubersDetailsList: GithubersProps[] = [
   {
@@ -26,9 +27,17 @@ export const githubersDetailsList: GithubersProps[] = [
 
 export const HomePage = () => {
   const { isSearchActive } = SerachUsernameStore();
+  const { userNameProfile } = userProfileGithubName();
   return (
     <>
       <main className="flex flex-col pt-4 dark:bg-bgDark-primary">
+        {!userNameProfile && (
+          <GlobalModalContainer
+            children={
+              <SearchUsername isUserProfile={!userNameProfile && true} />
+            }
+          />
+        )}
         <Header />
         <BannerSection />
         <EditMenuNavigationStack />

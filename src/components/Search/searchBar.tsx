@@ -2,6 +2,7 @@ import React from "react";
 import { useGithub } from "../../hook/githubuser/getGithubUser";
 import { SerachUsernameStore } from "../../store/searchResults";
 import { GithuberFound } from "../Githubers/Found/userFound";
+import { userProfileGithubName } from "../../store/profileName";
 
 export const SearchUsername = ({
   isUserProfile,
@@ -22,6 +23,8 @@ export const SearchUsername = ({
     isUserProfile,
   });
 
+  const { userNameProfile } = userProfileGithubName();
+
   const userName = watch("username");
 
   return (
@@ -31,8 +34,10 @@ export const SearchUsername = ({
         onSubmit={handleSubmit}
       >
         <legend>
-          Hora de encontrar aquele(a) GitHuber talentoso(a)! Digite o usuário e
-          vamos ver o que ele(a) anda codando por aí
+          {!userNameProfile
+            ? "adicione o seu username"
+            : `Hora de encontrar aquele(a) GitHuber talentoso(a)! Digite o usuário e
+          vamos ver o que ele(a) anda codando por aí`}
         </legend>
         <input
           type="text"
