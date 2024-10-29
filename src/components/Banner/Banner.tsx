@@ -1,10 +1,5 @@
 import clsx from "clsx";
-import { useEffect } from "react";
 export const BannerSection = () => {
-  useEffect(() =>{
-    console.time("BannerSection Render Time")
-    console.timeEnd("BannerSection Render Time")
-  },[])
   return (
     <>
       <section
@@ -15,8 +10,12 @@ export const BannerSection = () => {
         <p className="w-16 py-1 mb-2 flex justify-center gap-1 text-[12px] font-light bg-white text-black rounded-xl">
           ⭐ Github
         </p>
-        <div className={clsx("w-1/2 font-LexendFont font-bold flex flex-col gap-0 text-md text-white", 
-          "md:flex-row md:flex-wrap md:gap-2 md:text-lg")}>
+        <div
+          className={clsx(
+            "w-1/2 font-LexendFont font-bold flex flex-col gap-0 text-md text-white",
+            "md:flex-row md:flex-wrap md:gap-2 md:text-lg"
+          )}
+        >
           <p>Conecte-se</p>
           <p>Aos Seus Devs</p>
           <p>Favoritos</p>
