@@ -1,18 +1,20 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import type { GithubUserResponse } from "../@types/githubusers";
 
 interface ProfileName {
-  userNameProfile: string;
-  setGithubProfileName: (username: string) => void;
+  AuthProfile: GithubUserResponse[] | null;
+  setGithubProfileName: (data: GithubUserResponse[]) => void;
   clearGithubProfileName: () => void;
 }
 
 export const userProfileGithubName = create<ProfileName>()(
   persist(
     (set) => ({
-      userNameProfile: "",
-      setGithubProfileName: (newUserNameProfile) => set({ userNameProfile: newUserNameProfile }),
-      clearGithubProfileName: () => set({ userNameProfile: "" }),
+      AuthProfile: null,
+      setGithubProfileName: (data: GithubUserResponse[]) =>
+        set({ AuthProfile: data }),
+      clearGithubProfileName: () => set({ AuthProfile: null }),
     }),
     {
       name: "username-storage", // Nome da chave no localStorage
