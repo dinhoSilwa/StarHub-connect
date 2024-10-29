@@ -1,9 +1,9 @@
 import { stacksList } from "../../../model/allfavorites";
-import { SerachUsernameStore } from "../../../store/searchResults";
+import { SearchUsernameStore } from "../../../store/searchResults";
 
 export const GithuberFound = ({ isOpen }: { isOpen: boolean }) => {
   if (!isOpen) return null;
-  const { userFound } = SerachUsernameStore();
+  const { userFound } = SearchUsernameStore();
   return (
     <section>
       <span>Achou</span>

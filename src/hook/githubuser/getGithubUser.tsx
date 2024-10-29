@@ -9,15 +9,15 @@ import type {
   GithubErrorResponse,
   GithubUserResponse,
 } from "../../@types/githubusers";
-import { SerachUsernameStore } from "../../store/searchResults";
+import { SearchUsernameStore } from "../../store/searchResults";
 import { userProfileGithubName } from "../../store/profileName";
 
 interface GithubuserProps {
-  isUserProfile: boolean | null;
+  isUserProfile: true | false | undefined;
 }
 
 export const useGithub = ({ isUserProfile }: GithubuserProps) => {
-  const { setUserFound } = SerachUsernameStore();
+  const { setUserFound } = SearchUsernameStore();
   const { setGithubProfileName } = userProfileGithubName();
   const api = useHTTP();
   const QUERY_KEY = ["get-githubuser"] as const;
@@ -38,9 +38,7 @@ export const useGithub = ({ isUserProfile }: GithubuserProps) => {
     mutationFn: githubusermutation,
     onSuccess: (data) => {
       queryKey.invalidateQueries({ queryKey: QUERY_KEY });
-      isUserProfile
-        ? setGithubProfileName(data.login as any)
-        : setUserFound(data);
+      isUserProfile ? setGithubProfileName(data) : setUserFound(data);
       console.log(
         isUserProfile ? "é a busca do Perfil" : "Não é a busca do perfil",
         data

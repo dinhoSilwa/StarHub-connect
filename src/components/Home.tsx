@@ -5,7 +5,7 @@ import { EditMenuNavigationStack } from "./Navegations/EditMenu";
 import { GithubersProps } from "./Githubers/Lista/githubersList";
 import { GithubersListContainer } from "./Githubers/containerList/container";
 import { SearchUsername } from "./Search/searchBar";
-import { SerachUsernameStore } from "../store/searchResults";
+import { SearchUsernameStore } from "../store/searchResults";
 import { userProfileGithubName } from "../store/profileName";
 
 export const githubersDetailsList: GithubersProps[] = [
@@ -26,16 +26,16 @@ export const githubersDetailsList: GithubersProps[] = [
 ];
 
 export const HomePage = () => {
-  const { isSearchActive } = SerachUsernameStore();
-  const { userNameProfile } = userProfileGithubName();
+  const { isSearchActive } = SearchUsernameStore();
+  const { AuthProfile } = userProfileGithubName();
+  const isLoggedIn =
+    AuthProfile && AuthProfile.length > 0 && AuthProfile[0].login;
   return (
     <>
-      <main className="flex flex-col pt-4 dark:bg-bgDark-primary">
-        {!userNameProfile && (
+      <main className=" flex flex-col pt-4 dark:bg-bgDark-primary">
+        {!isLoggedIn && (
           <GlobalModalContainer
-            children={
-              <SearchUsername isUserProfile={!userNameProfile && true} />
-            }
+            children={<SearchUsername isUserProfile={!isLoggedIn && true} />}
           />
         )}
         <Header />
