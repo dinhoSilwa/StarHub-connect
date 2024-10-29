@@ -1,29 +1,29 @@
 import { create } from "zustand";
 
-type ModalState = {
-  modals: Record<string, boolean>;
-  openModal: (modalName: string) => void;
-  closeModal: (modalName: string) => void;
-  toggleModal: (modalName: string) => void;
+type ModalStoreState = {
+  modalVisibilityMap: Record<string, boolean>;
+  openModal: (modalKey: string) => void;
+  closeModal: (modalKey: string) => void;
+  toggleModal: (modalKey: string) => void;
 };
 
-export const useModalStore = create<ModalState>()((set) => ({
-  modals: {},
-  openModal: (modalName: string) =>
+export const useModalStore = create<ModalStoreState>()((set) => ({
+  modalVisibilityMap: {},
+  openModal: (modalKey: string) =>
     set((state) => ({
-      modals: { ...state.modals, [modalName]: true },
+      modalVisibilityMap: { ...state.modalVisibilityMap, [modalKey]: true },
     })),
 
-  closeModal: (modalName: string) =>
+  closeModal: (modalKey: string) =>
     set((state) => ({
-      modals: { ...state.modals, [modalName]: false },
+      modalVisibilityMap: { ...state.modalVisibilityMap, [modalKey]: false },
     })),
 
-  toggleModal: (modalName: string) =>
+  toggleModal: (modalKey: string) =>
     set((state) => ({
-      modals: {
-        ...state.modals,
-        [modalName]: !state.modals[modalName],
+      modalVisibilityMap: {
+        ...state.modalVisibilityMap,
+        [modalKey]: !state.modalVisibilityMap[modalKey],
       },
     })),
 }));

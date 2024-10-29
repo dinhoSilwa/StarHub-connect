@@ -1,6 +1,6 @@
 import React from "react";
 import { useGithub } from "../../hook/githubuser/getGithubUser";
-import { SerachUsernameStore } from "../../store/searchResults";
+import { SearchUsernameStore } from "../../store/searchResults";
 import { GithuberFound } from "../Githubers/Found/userFound";
 import { userProfileGithubName } from "../../store/profileName";
 
@@ -9,7 +9,7 @@ export const SearchUsername = ({
 }: {
   isUserProfile: boolean;
 }) => {
-  const { term, setIsActiveSearchModal } = SerachUsernameStore();
+  const { term, setIsActiveSearchModal } = SearchUsernameStore();
   const {
     handleSubmit,
     watch,
@@ -23,7 +23,9 @@ export const SearchUsername = ({
     isUserProfile,
   });
 
-  const { userNameProfile } = userProfileGithubName();
+  const { AuthProfile } = userProfileGithubName();
+  const isLoggedIn =
+    AuthProfile && AuthProfile.length > 0 && AuthProfile[0].login;
 
   const userName = watch("username");
 
@@ -34,7 +36,7 @@ export const SearchUsername = ({
         onSubmit={handleSubmit}
       >
         <legend>
-          {!userNameProfile
+          {!isLoggedIn
             ? "adicione o seu username"
             : `Hora de encontrar aquele(a) GitHuber talentoso(a)! Digite o usuário e
           vamos ver o que ele(a) anda codando por aí`}

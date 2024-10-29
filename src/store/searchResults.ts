@@ -11,7 +11,7 @@ export interface SearchTerms {
   setIsActiveSearchModal: () => void;
 }
 
-export const SerachUsernameStore = create<SearchTerms>((set) => ({
+export const SearchUsernameStore = create<SearchTerms>((set) => ({
   isSearchActive: false,
   term: "",
   userFound: null,
