@@ -32,7 +32,7 @@ export const HomePage = () => {
     AuthProfile && AuthProfile.length > 0 && AuthProfile[0].login;
   return (
     <>
-      <main className=" flex flex-col pt-4 dark:bg-bgDark-primary">
+      <main className=" flex flex-col pt-4 dark:bg-Dark-primary">
         {!isLoggedIn && (
           <GlobalModalContainer
             children={<SearchUsername isUserProfile={!isLoggedIn && true} />}

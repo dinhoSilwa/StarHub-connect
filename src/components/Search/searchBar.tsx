@@ -1,15 +1,17 @@
-import React from "react";
-import { useGithub } from "../../hook/githubuser/getGithubUser";
-import { SearchUsernameStore } from "../../store/searchResults";
+import React, { useEffect } from "react";
+import { useFindGithubers } from "../../hook/githubuser/getGithubUser";
 import { GithuberFound } from "../Githubers/Found/userFound";
 import { userProfileGithubName } from "../../store/profileName";
+import { Github, Loader, SpaceIcon, X } from "lucide-react";
+import { SearchUsernameStore } from "../../store/searchResults";
 
 export const SearchUsername = ({
   isUserProfile,
 }: {
   isUserProfile: boolean;
 }) => {
-  const { term, setIsActiveSearchModal } = SearchUsernameStore();
+  const { setIsActiveSearchModal } = SearchUsernameStore();
+
   const {
     handleSubmit,
     watch,
@@ -19,7 +21,8 @@ export const SearchUsername = ({
     isSuccess,
     isLoading,
     setValue,
-  } = useGithub({
+    isError,
+  } = useFindGithubers({
     isUserProfile,
   });
 
@@ -29,51 +32,73 @@ export const SearchUsername = ({
 
   const userName = watch("username");
 
+  const handleContent = () => {
+    reset();
+    setIsActiveSearchModal();
+  };
+
   return (
-    <section className="flex flex-col gap-2">
+    <section>
       <form
-        className="bg-white w-1/2 h-1/2  flex flex-col justify-center p-4 rounded-md"
+        className="bg-white max-w-[360px] px-4 py-4 rounded-lg font-sans flex flex-col gap-4 items-center"
         onSubmit={handleSubmit}
       >
-        <legend>
+        <div className="h-8 flex justify-end py-2 w-full" title="Fechar">
+          <X onClick={handleContent} />
+        </div>
+        <h1
+          className={`text-center font-source-code font-bold text-Dark-second ${isSuccess && "hidden"}`}
+        >
           {!isLoggedIn
             ? "adicione o seu username"
-            : `Hora de encontrar aquele(a) GitHuber talentoso(a)! Digite o usuário e
-          vamos ver o que ele(a) anda codando por aí`}
-        </legend>
-        <input
-          type="text"
-          placeholder="buscar"
-          value={userName || ""}
-          {...register("username", {
-            onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-              setValue(
-                "username",
-                e.target.value.replace(/\s+/g, "").toLowerCase()
-              );
-            },
-          })}
-        />
-        {errors.username && (
-          <span className="text-red-500 text-md">
-            {errors.username.message}
+            : `Hora de encontrar aquele(a) GitHuber talentoso(a)!`}
+        </h1>
+        <div className="w-full px-8 border-b-2 mx-8 mb-4"></div>
+
+        <fieldset className={`"relative" ${isSuccess ? "hidden" : "flex"}`}>
+          <input
+            type="text"
+            placeholder={errors.username ? errors.username.message : "Username"}
+            value={userName || ""}
+            className={`min-w-[320px] h-16 pl-4 outline-none rounded-md text-[20px] font-semibold ${errors.username ? "ring-2 ring-red-500 placeholder:text-red-300" : "ring-2"}`}
+            {...register("username", {
+              onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+                setValue(
+                  "username",
+                  e.target.value.replace(/\s+/g, "").toLowerCase()
+                );
+              },
+            })}
+          />
+        </fieldset>
+        {isError && (
+          <span className="text-sm text-center text-red-600">
+            {isError.message === "Request failed with status code 403"
+              ? "Você atingiu o limite de requisições da API do Github para o seu endereço de IP"
+              : "Falha Na Api do Github"}
           </span>
         )}
-        <button
-          type="submit"
-          disabled={isLoading ? true : false}
-          className="btn p-2 bg-red-600 text-white"
-        >
-          {isLoading ? <span>Procurarando...</span> : <span>Procurar</span>}
-        </button>
-        <button type="button" onClick={() => reset()}>
-          Limpar
-        </button>
-        {term}
-        <span onClick={setIsActiveSearchModal}>Fechar</span>
-        <span>{isSuccess ? "Encontrado" : null}</span>
+        <GithuberFound isOpen={isSuccess} />
+
+        <fieldset className="flex w-full py-2 z-50">
+          <button
+            type="submit"
+            disabled={isLoading ? true : false}
+            className="h-16 p-2 flex justify-center items-center flex-1 bg-Dark-second rounded-md text-white text-lg font-bold font-source-code"
+          >
+            {isLoading ? (
+              <span className="flex justify-center items-center gap-2">
+                <span>
+                  <Loader />
+                </span>{" "}
+                Procurarando...
+              </span>
+            ) : (
+              <span>Procurar </span>
+            )}
+          </button>
+        </fieldset>
       </form>
-      <GithuberFound isOpen={isSuccess} />
     </section>
   );
 };

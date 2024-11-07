@@ -16,7 +16,7 @@ interface GithubuserProps {
   isUserProfile: true | false | undefined;
 }
 
-export const useGithub = ({ isUserProfile }: GithubuserProps) => {
+export const useFindGithubers = ({ isUserProfile }: GithubuserProps) => {
   const { setUserFound } = SearchUsernameStore();
   const { setGithubProfileName } = userProfileGithubName();
   const api = useHTTP();
@@ -77,5 +77,6 @@ export const useGithub = ({ isUserProfile }: GithubuserProps) => {
     errors,
     isLoading: mutation.isPending,
     isSuccess: mutation.isSuccess,
+    isError : mutation.error
   };
 };
