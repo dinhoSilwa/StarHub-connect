@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useFindGithubers } from "../../hook/githubuser/getGithubUser";
 import { GithuberFound } from "../Githubers/Found/userFound";
 import { userProfileGithubName } from "../../store/profileName";
-import { Github, Loader, SpaceIcon, X } from "lucide-react";
+import {Loader, X } from "lucide-react";
 import { SearchUsernameStore } from "../../store/searchResults";
 
 export const SearchUsername = ({

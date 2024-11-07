@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { SearchUsernameStore } from "../../../store/searchResults";
-import { AlertCircle, Archive, Stars } from "lucide-react";
-import axios from "axios";
+import { Archive } from "lucide-react";
 import { StarsGithubers } from "./start";
 
 export const GithuberFound = ({ isOpen }: { isOpen: boolean }) => {
@@ -9,10 +8,7 @@ export const GithuberFound = ({ isOpen }: { isOpen: boolean }) => {
   const { userFound } = SearchUsernameStore();
   const [animationHeight, setanimationHeight] = useState("h-10");
 
-  const getStarts = async (url: string) => {
-    const response = await axios.get(url);
-    return response.data;
-  };
+
 
   useEffect(() => {
     setanimationHeight("h-[350px]");

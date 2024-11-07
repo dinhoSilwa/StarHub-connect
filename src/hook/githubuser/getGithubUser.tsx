@@ -38,7 +38,7 @@ export const useFindGithubers = ({ isUserProfile }: GithubuserProps) => {
     mutationFn: githubusermutation,
     onSuccess: (data) => {
       queryKey.invalidateQueries({ queryKey: QUERY_KEY });
-      isUserProfile ? setGithubProfileName(data) : setUserFound(data);
+      isUserProfile ? setGithubProfileName(data as any) : setUserFound(data as any);
       console.log(
         isUserProfile ? "é a busca do Perfil" : "Não é a busca do perfil",
         data
