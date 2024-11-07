@@ -3,8 +3,8 @@ import type { GithubUserResponse } from "../@types/githubusers";
 
 export interface SearchTerms {
   term: string;
-  userFound: GithubUserResponse | null;
-  setUserFound: (data: GithubUserResponse) => void;
+  userFound: GithubUserResponse[] | null;
+  setUserFound: (data: GithubUserResponse[]) => void;
   setSearchTerm: (term: string) => void;
   clearTerm: () => void;
   isSearchActive: boolean;
@@ -22,7 +22,7 @@ export const SearchUsernameStore = create<SearchTerms>((set) => ({
     set({
       term: newTerm.replace(/\s+/g, "").trim().toLowerCase(),
     }),
-  setUserFound: (data: GithubUserResponse) => set({ userFound: data }),
+  setUserFound: (data: GithubUserResponse[]) => set({ userFound: data }),
 
   clearTerm: () => set({ term: "", userFound: null }),
 }));
