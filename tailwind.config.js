@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode : "class",
+  darkMode: "class",
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -18,8 +18,8 @@ export default {
     },
 
     extend: {
-      fontSize :{
-        "xs" : "12px",
+      fontSize: {
+        "xs": "12px",
       },
 
       colors: {
@@ -27,9 +27,9 @@ export default {
         'purple-dark': '#2C0076',
         'yellow-icon': '#FCC313',
         'banner-title': '#51169C',
-        'bgDark-primary': "#181829",
-        'bgDark-second': "#4a4b89",
-        "bgDark-intense" : "#2B2B3D"
+        'Dark-primary': "#181829",
+        'Dark-second': "#4a4b89",
+        "Dark-intense": "#2B2B3D"
 
       },
       fontFamily: {
