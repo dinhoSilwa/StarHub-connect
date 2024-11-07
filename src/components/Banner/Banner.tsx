@@ -1,24 +1,29 @@
 import clsx from "clsx";
-import bannerIcon from '../../assets/banner/banner_01.png'
 export const BannerSection = () => {
   return (
     <>
       <section
         className={clsx(
-          "flex justify-center items-center rounded-xl banner-gradiente h-[132px] w-[95%] ml-auto mr-auto px-4 mb-4",
-          "small:justify-between small:px-4 small:h-[182px]"
+          "relative flex flex-col gap-0 justify-center rounded-xl bg-blue-800 h-40 w-[92%] ml-auto mr-auto px-4 mb-4"
         )}
       >
-        <header className="flex flex-col font-LexendFont w-[150px] mr-6">
-          <h3 className={clsx("font-light text-[12px] text-banner-title", "small:text-[14px]")}>
-            Conecte-se aos seus
-          </h3>
-          <h2 className={clsx("font-bold leading-[16px] text-banner-title", "small:leading-6  small:text-[20px]")}>
-            {" "}
-            Desenvolvedores Favoritos
-          </h2>
-        </header>
-        <img src={bannerIcon} alt="" className={clsx("w-[100px]", "small:w-[140px] ")} />
+        <p className="w-16 py-1 mb-2 flex justify-center gap-1 text-[12px] font-light bg-white text-black rounded-xl">
+          ⭐ Github
+        </p>
+        <div
+          className={clsx(
+            "w-1/2 font-LexendFont font-bold flex flex-col gap-0 text-md text-white",
+            "md:flex-row md:flex-wrap md:gap-2 md:text-lg"
+          )}
+        >
+          <p>Conecte-se</p>
+          <p>Aos Seus Devs</p>
+          <p>Favoritos</p>
+        </div>
+        <img
+          src={"https://i.imgur.com/kLLNXdU.png"}
+          className="w-40 top-2 absolute right-0 drop-shadow-md -scale-x-100"
+        />
       </section>
     </>
   );
